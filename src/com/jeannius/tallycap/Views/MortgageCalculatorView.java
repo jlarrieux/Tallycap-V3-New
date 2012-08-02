@@ -52,7 +52,7 @@ public class MortgageCalculatorView extends MyScrollViewWithDate implements  OnC
 		calculate = new Button(context);
 		whatIf = new Button(context);
 		result = new TextView(context);
-		Model = new CalculatorsModel();
+		Model = new CalculatorsModel(context);
 		unDate = new MyUneditableDateEditText(context);
 		downSelector = new Spinner(context);
 		

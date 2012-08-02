@@ -50,7 +50,7 @@ public class LoanCalculatorView extends MyScrollViewWithDate implements  OnClick
 		whatIf = new Button(context);
 		unDate = new MyUneditableDateEditText(context);
 		lenghtSelector = new Spinner(context);
-		Model = new CalculatorsModel();
+		Model = new CalculatorsModel(context);
 		result = new TextView(context);
 		
 		amount = (MyEditText) findViewById(R.id.LoanAmountMyEditText);

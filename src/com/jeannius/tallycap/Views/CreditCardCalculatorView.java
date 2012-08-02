@@ -38,7 +38,7 @@ public class CreditCardCalculatorView extends ScrollView implements View.OnClick
 	
 	private void init(){
 		
-		Model = new CalculatorsModel();
+		Model = new CalculatorsModel(context);
 		balance = new MyEditText(context);
 		interest = new MyEditText(context);
 		creditLimit = new MyEditText(context);

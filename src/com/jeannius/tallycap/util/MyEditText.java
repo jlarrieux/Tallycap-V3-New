@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -38,6 +39,9 @@ public class MyEditText extends EditText {
 		this.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_FLAG_DECIMAL);
 		min = 0;
 		max =0;
+		InputFilter[] f = new InputFilter[1];
+		f[0] = new InputFilter.LengthFilter(12);
+		this.setFilters(f);
 	}
 	
 	public void setMin(double i){

@@ -10,6 +10,7 @@ import org.achartengine.model.TimeSeries;
 import org.achartengine.model.XYSeries;
 
 import android.content.Context;
+import android.view.View;
 
 import com.jeannius.tallycap.CalculatorActivity;
 import com.jeannius.tallycap.R;
@@ -172,7 +173,7 @@ public abstract class CalculatorAbstractModel  {
 		//this is for calculating 401k final amount
 		
 		protected double k401kCalculator(double annualPay, double contributionAmount, String contributionType, int numberOfYearsBeforeRetirement,
-		double rateOfReturnPercent, double annualIncrease, double currentSavings, double employerMatch, double employerLimit){
+		double rateOfReturnPercent, double annualIncrease, double currentSavings, double employerMatch, double employerLimit, Context context){
 		
 			double f, actualValueTowardsRetirement, a1,a2;//a1= amount your contributing, a2= amount employer is contributing
 			f=0;
@@ -187,7 +188,7 @@ public abstract class CalculatorAbstractModel  {
 			
 			for(int j=0; j<numberOfYearsBeforeRetirement; j++){
 				//step 1 update a1
-				if(contributionType=="fixed") a1 = contributionAmount;
+				if(contributionType==context.getResources().getString(R.string.fixed)) a1 = contributionAmount;
 				else a1= annualPay*contributionAmount/100;
 				
 				//step 2 update a2

@@ -86,11 +86,12 @@
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/K401kResultTextView"
+            android:layout_marginTop="30dp"
             android:gravity="center"
             android:paddingBottom="15dp" >
 
@@ -186,9 +187,9 @@
             android:layout_alignBottom="@+id/textView8"
             android:layout_alignLeft="@+id/K401kEmployerMatchMyEditText"
             android:ems="10" />
-
+
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/K401kContributionSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/textView2"

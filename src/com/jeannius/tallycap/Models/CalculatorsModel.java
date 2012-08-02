@@ -2,13 +2,17 @@ package com.jeannius.tallycap.Models;
 
 import java.util.Calendar;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.jeannius.tallycap.CalculatorActivity;
 
 public class CalculatorsModel extends CalculatorAbstractModel {
 	
-	
+	private Context context;
+	public CalculatorsModel(Context context){
+		this.context = context;
+	}
 	//this is the function for the Auto Calculator
 	public double AutoCalculateTheValue(double interest, double amount,int length,  Calendar StartDate) {
 
@@ -68,12 +72,13 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 	
 	
 	
-//	public double CreditCardCalculateTheValue(double balance, double apr, double monthFee, double overThelimFee, double creditLim){
-//		
-//		double r = this.creditCardMinimumPaymentCalculator(balance, apr, monthFee, overThelimFee, creditLim);
-//		return r;
-//	}
-	
+	public double K401kCalculateTheValute(double annualPay, double contributionAmount, int numberOfYearsBeforeRetirement, double rateOfReturnPercent, double annualIncrease, double currentSavings, double employerMatch, double employerLimit, String contributionType){
+		
+		double r=k401kCalculator(annualPay, contributionAmount, contributionType, numberOfYearsBeforeRetirement, rateOfReturnPercent, annualIncrease, currentSavings, employerMatch, employerLimit, context);
+		
+		return r;
+		
+	}
 	
 	
 	

@@ -51,7 +51,7 @@ public class AutoCalculatorView extends MyScrollViewWithDate implements  OnClick
 		length = new Spinner(context);
 		calculate = new Button(context);
 		whatIf = new Button(context);
-		Model = new CalculatorsModel();
+		Model = new CalculatorsModel(context);
 		unDate = new MyUneditableDateEditText(context);
 		tradeInValue = new MyEditText(context);
 		downPayment = new MyEditText(context);
