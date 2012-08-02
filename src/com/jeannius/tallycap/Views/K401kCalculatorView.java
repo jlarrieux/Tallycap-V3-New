@@ -1,21 +1,20 @@
 package com.jeannius.tallycap.Views;
 
-import com.jeannius.tallycap.R;
-import com.jeannius.tallycap.Models.CalculatorsModel;
-import com.jeannius.tallycap.util.MyEditText;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class K401kCalculatorView extends ScrollView implements OnClickListener{
+import com.jeannius.tallycap.R;
+import com.jeannius.tallycap.Models.CalculatorsModel;
+import com.jeannius.tallycap.util.MyEditText;
+
+public class K401kCalculatorView extends MyScrollViewWithDate implements OnClickListener{
 	
 	private MyEditText annualSalary, contribution, yearsToRetirement, rateOfReturn, annualIncrease,
 	currentSavings, employerMatch, employerLimit;
@@ -154,7 +153,8 @@ public class K401kCalculatorView extends ScrollView implements OnClickListener{
 					
 					double j = Model.K401kCalculateTheValute(annualPay, contributionAmount, numberOfYearsBeforeRetirement, rateOfReturnPercent, annualIncr, currentSav, employerM, employerL, contributionType);
 					
-					result.setText(String.format(getResources().getString(R.string.k401k_final_value), j));
+					result.setText(String.format(getResources().getString(R.string.k401k_final_value), nf.format(j)));
+					
 				}
 				
 				

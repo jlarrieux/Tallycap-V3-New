@@ -1,5 +1,7 @@
 package com.jeannius.tallycap;
 
+import java.util.Locale;
+
 import android.os.Bundle;
 
 import com.actionbarsherlock.app.ActionBar;
@@ -15,12 +17,7 @@ public class CalculatorActivity extends MyAbstractActivity {
 
 	public static int NUM_TABS = 8;
 	
-//	public static String AUTO ="Auto";
-//	public static String MORTGAGE ="Mortgage";
-//	public static String LOAN ="Loan";
-//	public static String CREDIT_CARD ="Credit Card";
-//	public static String K401K ="401k";
-//	public static String AFFORDABILITY ="Affordability";
+	
 	public static String GOOD ="good";
 
 	public static String WEEKLY="Weekly";
@@ -28,7 +25,7 @@ public class CalculatorActivity extends MyAbstractActivity {
 	public static String MONTHLY="Monthly";
 	public static String YEARLY="Yearly";
 	
-	
+	public Locale locale;
 	private CalculatorViewPagerAdapter mAdapter;
 	private myViewPager mPager;
 	private myTabPageIndicator mIndicator;
@@ -39,6 +36,8 @@ public class CalculatorActivity extends MyAbstractActivity {
 	@Override
 	protected void onCreate(Bundle arg0) {		
 		super.onCreate(arg0);
+		
+		locale =getResources().getConfiguration().locale;
 		setContentView(R.layout.calculator_tab_layout);
 		mAdapter = new CalculatorViewPagerAdapter(getSupportFragmentManager(), getApplicationContext());
 		mPager = (myViewPager) findViewById(R.id.myViewPager1);

@@ -96,13 +96,14 @@
             android:layout_marginLeft="15dp"
             android:layout_toRightOf="@+id/LoanLengthMyEditText"
             android:entries="@array/length_array" />
-
+
         <TextView
             android:id="@+id/LoanResultTextView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/LoanLengthMyEditText"
             android:layout_marginTop="30dp"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <LinearLayout

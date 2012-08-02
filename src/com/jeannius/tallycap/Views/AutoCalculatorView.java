@@ -149,7 +149,7 @@ public class AutoCalculatorView extends MyScrollViewWithDate implements  OnClick
 					
 					Log.v("FINANCED AMOUNT", String.valueOf(p));
 					double j = Model.AutoCalculateTheValue(i, p, l, unDate.c);
-					result.setText(String.format(getResources().getString(R.string.monthly_payments_format), j));
+					result.setText(String.format(getResources().getString(R.string.monthly_payments_format), nf.format(j)));
 				}
 			}
 		}

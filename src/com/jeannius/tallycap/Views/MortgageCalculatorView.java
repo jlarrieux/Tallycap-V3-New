@@ -154,7 +154,7 @@ public class MortgageCalculatorView extends MyScrollViewWithDate implements  OnC
 					p = p-down;
 					Log.v("AMOUNT FINANCED", String.valueOf(p));
 					double j = Model.MortgageCalculateTheValue(i, p, l, unDate.c, y);
-					result.setText(String.format(getResources().getString(R.string.monthly_mortgage_payments_format), j));
+					result.setText(String.format(getResources().getString(R.string.monthly_mortgage_payments_format), nf.format(j)));
 					
 				}
 			}

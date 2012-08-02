@@ -14,7 +14,7 @@ import com.jeannius.tallycap.R;
 import com.jeannius.tallycap.Models.CalculatorsModel;
 import com.jeannius.tallycap.util.MyEditText;
 
-public class CreditCardCalculatorView extends ScrollView implements View.OnClickListener {
+public class CreditCardCalculatorView extends MyScrollViewWithDate implements View.OnClickListener {
 	
 	private Context context;
 	private CalculatorsModel Model;
@@ -110,7 +110,7 @@ public class CreditCardCalculatorView extends ScrollView implements View.OnClick
 				if(creditLimit.getText().toString().length()>0) creditl = Double.valueOf(creditLimit.getText().toString());
 				
 				double j = Model.creditCardMinimumPaymentCalculator(bal, apr, monthlyf, overthelimitf, creditl);
-				result.setText(String.format(getResources().getString(R.string.monthly_payments_format), j));
+				result.setText(String.format(getResources().getString(R.string.monthly_payments_format), nf.format(j)));
 			}
 			
 		}

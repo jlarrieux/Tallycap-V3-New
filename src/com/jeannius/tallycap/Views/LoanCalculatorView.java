@@ -108,7 +108,7 @@ public class LoanCalculatorView extends MyScrollViewWithDate implements  OnClick
 				
 				double j = Model.LoanCalculateTheValue(i, p, l, unDate.c, f);
 				
-				result.setText(String.format(getResources().getString(R.string.monthly_payments_format), j));
+				result.setText(String.format(getResources().getString(R.string.monthly_payments_format),nf.format(j)));
 			}
 			
 		}

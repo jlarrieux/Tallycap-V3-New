@@ -51,8 +51,8 @@
             <string name="enter_amount_per_mount">Enter $/month</string>
             <string name="yearly_taxes">Yearly Taxes</string>
             <string name="length_in_years"># of Years</string>
-            <string name="monthly_payments_format">Your monthly payment is $%.2f</string>
-            <string name="monthly_mortgage_payments_format">Your mortgage payment is $%.2f</string>
+            <string name="monthly_payments_format">Your monthly payment is $%s</string>
+            <string name="monthly_mortgage_payments_format">Your mortgage payment is $%s</string>
             <string name="down_payment">Down Payment</string>
             <string-array name="fixed_vs_percent">
                 <item >%</item>
@@ -98,6 +98,6 @@
                         <string name="frequency_of_saving">Saving Frequency</string>
                         <string name="fixed">Fixed</string>
                         <string name="percent">Percent</string>
-                        <string name="k401k_final_value">Your 401K final value is $%.2f</string>
+                        <string name="k401k_final_value">Your 401K final value is $%s</string>
 
 </resources>
