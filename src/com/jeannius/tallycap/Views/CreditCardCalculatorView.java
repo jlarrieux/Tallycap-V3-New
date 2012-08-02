@@ -79,7 +79,7 @@ public class CreditCardCalculatorView extends ScrollView implements View.OnClick
 		balance.setRequired(true);
 		interest.setRequired(true);
 		interest.setMax(1000);
-		
+		//test
 	}
 
 
