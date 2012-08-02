@@ -1,0 +1,100 @@
+<resources>
+
+    <string name="app_name">Tallycap</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="feedback">Send Feedback</string>
+    <string name="about">About</string>
+    <string name="help">Help</string>
+    <string name="reminder">Reminders</string>
+    <string name="calculator">Calculators</string>
+    <string name="budgetpad">Budget Pad</string>
+    <string name="account">Account</string>
+    <string name="start_date">Start Date</string>
+    <string name="amount">Amount</string>
+    <string name="interest_rate">Interest Rate</string>
+    <string name="enter_amount">Enter $</string>
+    <string name="enter_interest">Enter %</string>
+    <string name="dummy">Dummy Data</string>
+    <string name="enter_date">Enter Date</string>
+    <string name="calculate">Calculate</string>
+    <string name="auto">Auto</string>
+    <string name="mortgage">Mortgage</string>
+    <string name="loan">Loan</string>
+    <string name="k401K">401K</string>
+    <string name="credit_card">Credit Card</string>
+    <string name="length">Length</string>
+    <string-array name="auto_loan_length">
+        <item >24 months</item>
+        <item >36 months</item>
+        <item >48 months</item>
+        <item >60 months</item>
+        <item >72 months</item>
+    </string-array>
+        <string name="cancel">Cancel</string>
+        <string name="what_if">What if&#8230;</string>
+        <string-array name="mortgage_loan_length">
+            <item >10 years</item>
+            <item >15 years</item>
+            <item >30 years</item>
+            <item >40 years</item>
+        </string-array>
+            <string name="enter_length">Enter length</string>
+            <string-array name="length_array">
+                <item >Week (s)</item>
+                <item >Month (s)</item>
+                <item >Years (s)</item>
+            </string-array>
+            <string name="affordability">Affordability</string>
+            <string name="maturity_date">Maturity Date</string>
+            <string name="enter_amount_per_mount">Enter $/month</string>
+            <string name="yearly_taxes">Yearly Taxes</string>
+            <string name="length_in_years"># of Years</string>
+            <string name="monthly_payments_format">Your monthly payment is $%.2f</string>
+            <string name="monthly_mortgage_payments_format">Your mortgage payment is $%.2f</string>
+            <string name="down_payment">Down Payment</string>
+            <string-array name="fixed_vs_percent">
+                <item >%</item>
+                <item >$</item>
+            </string-array>
+                <string name="trade_in_value">Trade-In Value</string>
+                <string name="savings_planner">Savings Planner</string>
+                <string name="savings_future">Future Savings</string>
+                <string name="balance">Balance</string>
+                <string name="credit_limit">Credit Limit</string>
+                <string name="monthly_fee">Monthly Fee</string>
+                <string name="annual_fee">Annual Fee</string>
+                <string name="over_the_limit_fee">Over the Limit Fee</string>
+                <string-array name="month_long_array">
+                    <item >January</item>
+                    <item >February</item>
+                    <item >March</item>
+                    <item >April</item>
+                    <item >May</item>
+                    <item >June</item>
+                    <item >July</item>
+                    <item >August</item>
+                    <item >September</item>
+                    <item >October</item>
+                    <item >November</item>
+                    <item >December</item>
+                </string-array>
+                    <string name="annual_salary">Annual Salary</string>
+                    <string name="contribution">Contribution</string>
+                    <string name="years_to_retirement">Years to Retirement</string>
+                    <string name="rate_of_return">Rate of Return</string>
+                    <string name="annual_increase">Annual Increase</string>
+                    <string name="current_savings">Current Savings</string>
+                    <string name="employer_match">Employer\'s Match</string>
+                    <string name="employer_limit">Employer\'s Limit</string>
+                    <string-array name="frequency_array">
+                        <item >Weekly</item>
+                        <item >Biweekly</item>
+                        <item >Monthly</item>
+                        <item >Yearly</item>
+                    </string-array>
+                        <string name="goal">Goal</string>
+                        <string name="frequency_of_saving">Saving Frequency</string>
+
+</resources>

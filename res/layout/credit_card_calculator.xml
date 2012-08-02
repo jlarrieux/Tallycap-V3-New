@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="60dp" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/balance" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/textView1"
+            android:layout_below="@id/textView1"
+            android:layout_marginTop="30dp"
+            android:text="@string/interest_rate" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/textView2"
+            android:layout_below="@id/textView2"
+            android:layout_marginTop="30dp"
+            android:text="@string/credit_limit" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/textView3"
+            android:layout_below="@id/textView3"
+            android:layout_marginTop="30dp"
+            android:text="@string/monthly_fee" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/textView4"
+            android:layout_below="@id/textView4"
+            android:layout_marginTop="30dp"
+            android:text="@string/annual_fee" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/textView5"
+            android:layout_below="@id/textView5"
+            android:layout_marginTop="30dp"
+            android:text="@string/over_the_limit_fee" />
+
+        <com.jeannius.tallycap.util.MyEditText
+            android:id="@+id/CreditCardBalanceMyEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/textView1"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/textView1"
+            android:ems="10" >
+
+            <requestFocus />
+        </com.jeannius.tallycap.util.MyEditText>
+
+        <com.jeannius.tallycap.util.MyEditText
+            android:id="@+id/CreditCardInterestMyEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView2"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_alignLeft="@+id/CreditCardBalanceMyEditText"
+            android:ems="10" />
+
+        <com.jeannius.tallycap.util.MyEditText
+            android:id="@+id/CreditCardCreditLimitMyEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_alignLeft="@+id/CreditCardInterestMyEditText"
+            android:ems="10" />
+
+        <com.jeannius.tallycap.util.MyEditText
+            android:id="@+id/CreditCardMonthlyFeeMyEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView4"
+            android:layout_alignBottom="@+id/textView4"
+            android:layout_alignLeft="@+id/CreditCardCreditLimitMyEditText"
+            android:ems="10" />
+
+        <com.jeannius.tallycap.util.MyEditText
+            android:id="@+id/CreditCardAnnualFeeMyEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView5"
+            android:layout_alignBottom="@+id/textView5"
+            android:layout_alignLeft="@+id/CreditCardMonthlyFeeMyEditText"
+            android:ems="10"
+            android:width="80dp" />
+
+        <com.jeannius.tallycap.util.MyEditText
+            android:id="@+id/CreditCardOverTheLimitFeeMyEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/textView6"
+            android:layout_alignBottom="@id/textView6"
+            android:layout_alignLeft="@id/CreditCardAnnualFeeMyEditText"
+            android:ems="10" />
+
+        <Spinner
+            android:id="@+id/CreditCardAnnualFeeMonthSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/textView5"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/textView5"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/CreditCardAnnualFeeMyEditText"
+            android:entries="@array/month_long_array" />
+
+        <TextView
+            android:id="@+id/CreditCardResultTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView6"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/CreditCardResultTextView"
+            android:layout_marginTop="30dp"
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/CreditCardCalculateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:minWidth="120dip"
+                android:text="@string/calculate" /><Button
+                android:id="@+id/CreditCardWhatIfButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:minWidth="120dip"
+                android:text="@string/what_if" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

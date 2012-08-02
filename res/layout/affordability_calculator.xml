@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="280dp" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/amount" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/textView1"
+            android:layout_below="@+id/textView1"
+            android:layout_marginTop="30dp"
+            android:text="@string/interest_rate" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/textView2"
+            android:layout_below="@+id/textView2"
+            android:layout_marginTop="30dp"
+            android:text="@string/length" />
+
+        <com.jeannius.tallycap.util.MyEditText
+            android:id="@+id/AffordabilityAmountMyEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView1"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/textView1"
+            android:ems="10"
+            android:hint="@string/enter_amount_per_mount" >
+
+            <requestFocus />
+        </com.jeannius.tallycap.util.MyEditText>
+
+        <com.jeannius.tallycap.util.MyEditText
+            android:id="@+id/AffordibilityInterestMyEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView2"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_alignLeft="@id/AffordabilityAmountMyEditText"
+            android:ems="10"
+            android:hint="@string/enter_interest"
+            android:maxLength="5" />
+
+        <com.jeannius.tallycap.util.MyEditText
+            android:id="@+id/AffordabilityLengthMyEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_alignLeft="@id/AffordibilityInterestMyEditText"
+            android:ems="10"
+            android:hint="@string/length_in_years"
+            android:inputType="number"
+            android:maxLength="3" />
+
+        <TextView
+            android:id="@+id/AffordabilityResultTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/AffordabilityResultTextView"
+            android:layout_marginTop="30dp"
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/AffordabilityCalculateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calculate" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

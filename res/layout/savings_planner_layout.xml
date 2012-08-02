@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="90dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/goal" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/textView1"
+            android:layout_below="@id/textView1"
+            android:layout_marginTop="30dp"
+            android:text="@string/length" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/textView2"
+            android:layout_below="@id/textView2"
+            android:layout_marginTop="30dp"
+            android:text="@string/frequency_of_saving" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/textView3"
+            android:layout_below="@id/textView3"
+            android:layout_marginTop="30dp"
+            android:text="@string/interest_rate" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/textView4"
+            android:layout_below="@id/textView4"
+            android:layout_marginTop="30dp"
+            android:text="@string/current_savings" />
+
+        <TextView
+            android:id="@+id/SavingsPlannerResultTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView5"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/SavingsPlannerResultTextView"
+            android:layout_marginTop="30dp"
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:minWidth="120dip"
+                android:text="@string/calculate" /><Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:minWidth="120dip"
+                android:text="@string/what_if" />
+
+        </LinearLayout>
+
+        <com.jeannius.tallycap.util.MyEditText
+            android:id="@+id/SavingsPlannerGoalMyEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView1"
+            android:layout_alignBottom="@+id/textView1"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/textView1"
+            android:ems="10" >
+
+            <requestFocus />
+        </com.jeannius.tallycap.util.MyEditText>
+
+        <com.jeannius.tallycap.util.MyEditText
+            android:id="@+id/SavingsPlanerLengthMyEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView2"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_alignLeft="@+id/SavingsPlannerGoalMyEditText"
+            android:ems="10"
+            android:width="100dp" />
+
+        <com.jeannius.tallycap.util.MyEditText
+            android:id="@+id/SavingPlannerInterestMyEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView4"
+            android:layout_alignBottom="@+id/textView4"
+            android:layout_alignLeft="@+id/SavingsPlanerLengthMyEditText"
+            android:ems="10" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/textView3"
+            android:layout_alignLeft="@+id/SavingPlannerInterestMyEditText"
+            android:layout_alignTop="@id/textView3"
+            android:layout_marginTop="30dp"
+            android:entries="@array/frequency_array" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/textView2"
+            android:layout_alignTop="@+id/textView2"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/SavingsPlanerLengthMyEditText"
+            android:entries="@array/length_array" />
+
+        <com.jeannius.tallycap.util.MyEditText
+            android:id="@+id/SavingsPlannerCurrentSavingsMyEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView5"
+            android:layout_alignBottom="@+id/textView5"
+            android:layout_alignLeft="@+id/SavingPlannerInterestMyEditText"
+            android:ems="10" />
+
+    </RelativeLayout>
+
+</ScrollView>
