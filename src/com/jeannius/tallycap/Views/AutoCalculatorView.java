@@ -3,13 +3,11 @@ package com.jeannius.tallycap.Views;
 import java.util.Calendar;
 
 import android.app.DatePickerDialog;
-import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
@@ -21,7 +19,7 @@ import com.jeannius.tallycap.Models.CalculatorsModel;
 import com.jeannius.tallycap.util.MyEditText;
 import com.jeannius.tallycap.util.MyUneditableDateEditText;
 
-public class AutoCalculatorView extends MyScrollViewWithDate implements  OnClickListener, OnDateSetListener{
+public class AutoCalculatorView extends MyScrollViewWithDate {
 
 	private Context context;
 	private CalculatorsModel Model;

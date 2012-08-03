@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,7 +13,7 @@ import com.jeannius.tallycap.R;
 import com.jeannius.tallycap.Models.CalculatorsModel;
 import com.jeannius.tallycap.util.MyEditText;
 
-public class CreditCardCalculatorView extends MyScrollViewWithDate implements View.OnClickListener {
+public class CreditCardCalculatorView extends MyScrollViewWithDate  {
 	
 	private Context context;
 	private CalculatorsModel Model;

@@ -33,7 +33,7 @@
             android:layout_below="@+id/textView2"
             android:layout_marginTop="30dp"
             android:text="@string/length" />
-
+
         <com.jeannius.tallycap.util.MyEditText
             android:id="@+id/AffordabilityAmountMyEditText"
             android:layout_width="wrap_content"
@@ -42,7 +42,8 @@
             android:layout_marginLeft="15dp"
             android:layout_toRightOf="@+id/textView1"
             android:ems="10"
-            android:hint="@string/enter_amount_per_mount" >
+            android:hint="@string/enter_amount"
+            android:width="100dp" >
 
             <requestFocus />
         </com.jeannius.tallycap.util.MyEditText>
@@ -84,14 +85,32 @@
             android:layout_below="@+id/AffordabilityResultTextView"
             android:layout_marginTop="30dp"
             android:gravity="center" >
-
+
             <Button
                 android:id="@+id/AffordabilityCalculateButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
                 android:text="@string/calculate" />
+
+            <Button
+                android:id="@+id/AffordabilityWhatIfButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="@string/what_if" />
 
         </LinearLayout>
+
+        <Spinner
+            android:id="@+id/AffordabilityAmountFrequencySpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/textView1"
+            android:layout_alignTop="@+id/textView1"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/AffordabilityAmountMyEditText"
+            android:entries="@array/frequency_array" />
 
     </RelativeLayout>
 

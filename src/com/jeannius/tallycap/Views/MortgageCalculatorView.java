@@ -3,13 +3,13 @@ package com.jeannius.tallycap.Views;
 import java.util.Calendar;
 
 import android.app.DatePickerDialog;
-import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
@@ -21,11 +21,11 @@ import com.jeannius.tallycap.Models.CalculatorsModel;
 import com.jeannius.tallycap.util.MyEditText;
 import com.jeannius.tallycap.util.MyUneditableDateEditText;
 
-public class MortgageCalculatorView extends MyScrollViewWithDate implements  OnClickListener, OnDateSetListener{
+public class MortgageCalculatorView extends MyScrollViewWithDate implements  OnItemSelectedListener{
 	
 	private Context context;	
 	private MyEditText amount, interest, yearlyTaxes, downPayment;
-	private Spinner length, downSelector;
+	private Spinner length, downSelector, taxSelector;
 	private Button calculate, whatIf;
 	private TextView result;
 	private MyUneditableDateEditText unDate;
@@ -55,6 +55,7 @@ public class MortgageCalculatorView extends MyScrollViewWithDate implements  OnC
 		Model = new CalculatorsModel(context);
 		unDate = new MyUneditableDateEditText(context);
 		downSelector = new Spinner(context);
+		taxSelector = new Spinner(context);
 		
 		amount = (MyEditText) findViewById(R.id.MortgageAmountEditText);
 		length = (Spinner) findViewById(R.id.MortgageLengthSpinner);
@@ -65,6 +66,7 @@ public class MortgageCalculatorView extends MyScrollViewWithDate implements  OnC
 		result = (TextView) findViewById(R.id.MortgageResultTextView);
 		unDate = (MyUneditableDateEditText) findViewById(R.id.MortgageDateEditText);
 		downSelector = (Spinner) findViewById(R.id.MortgageDownPaymentSelectorSpinner);
+		taxSelector = (Spinner) findViewById(R.id.MortgageYearlyTaxesSelectionSpinner);
 		Resources r = getResources();
 		
 		amount.setName(r.getString(R.string.amount));
@@ -85,7 +87,8 @@ public class MortgageCalculatorView extends MyScrollViewWithDate implements  OnC
 		calculate.setOnClickListener(this);
 		whatIf.setOnClickListener(this);
 		unDate.setOnClickListener(this);
-		
+		taxSelector.setOnItemSelectedListener(this);
+		downSelector.setOnItemSelectedListener(this);
 		
 	}
 
@@ -119,8 +122,9 @@ public class MortgageCalculatorView extends MyScrollViewWithDate implements  OnC
 				Double p =Double.valueOf(amount.getText().toString());
 				int l = Model.numberFromStringParser(length.getSelectedItem().toString());
 								
-				yearlyTaxes.setMax(p*.99);
 				
+				if(taxSelector.getSelectedItemPosition()==0) yearlyTaxes.setMax(1000);
+				else yearlyTaxes.setMax(p*.99);
 				
 				switch(downSelector.getSelectedItemPosition()){
 					case 0:
@@ -137,7 +141,11 @@ public class MortgageCalculatorView extends MyScrollViewWithDate implements  OnC
 				if(s.length()>0) Toast.makeText(context, s, Toast.LENGTH_LONG).show();
 				else{								
 				
-					if(yearlyTaxes.getText().toString().length()>0) y =Double.valueOf(yearlyTaxes.getText().toString());
+					if(yearlyTaxes.getText().toString().length()>0){
+						if(taxSelector.getSelectedItemPosition()==1)y =Double.valueOf(yearlyTaxes.getText().toString());
+						else y =Double.valueOf(yearlyTaxes.getText().toString())*p/100;
+					}
+					
 					if(downPayment.getText().toString().length()>0){
 						switch(downSelector.getSelectedItemPosition()){
 							case 0:
@@ -172,6 +180,33 @@ public class MortgageCalculatorView extends MyScrollViewWithDate implements  OnC
 	public void onDateSet(DatePicker view, int year, int monthOfYear,int dayOfMonth) {
 		
 		unDate.setCalendar(year, monthOfYear, dayOfMonth);
+	}
+
+
+	@Override
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+		
+//		Log.v("MORTGAGE SPINNER", "Clicked");
+		int s1 = ((Spinner) arg0).getSelectedItemPosition();
+		int s = ((Spinner) arg0).getId();
+//		Toast.makeText(context, "Down", Toast.LENGTH_LONG).show();
+		if(s==R.id.MortgageYearlyTaxesSelectionSpinner){
+			if(s1==0) yearlyTaxes.setHint(getResources().getString(R.string.enter_interest));
+			else yearlyTaxes.setHint(getResources().getString(R.string.enter_amount));
+//			Log.v("MORTGAGE SPINNER", "Yearly taxes "+ String.valueOf(s));
+		}
+		else if(s==R.id.MortgageDownPaymentSelectorSpinner){
+			if(s1==0) downPayment.setHint(getResources().getString(R.string.enter_interest));
+			else downPayment.setHint(getResources().getString(R.string.enter_amount));
+//			Log.v("MORTGAGE SPINNER", "Down payment"+ String.valueOf(s));
+		}
+	}
+
+
+	@Override
+	public void onNothingSelected(AdapterView<?> arg0) {
+		
+		
 	}
 	
 	

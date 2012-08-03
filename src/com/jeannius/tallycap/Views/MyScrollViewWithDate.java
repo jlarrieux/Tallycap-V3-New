@@ -2,14 +2,16 @@ package com.jeannius.tallycap.Views;
 
 import java.text.NumberFormat;
 
+import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.DatePicker;
 import android.widget.ScrollView;
 
 import com.jeannius.tallycap.util.MyUneditableDateEditText;
 
-public abstract class MyScrollViewWithDate extends ScrollView implements OnClickListener{
+public abstract class MyScrollViewWithDate extends ScrollView implements OnClickListener, OnDateSetListener{
 	
 	private MyUneditableDateEditText dateText;
 	protected NumberFormat nf;
@@ -33,6 +35,13 @@ public abstract class MyScrollViewWithDate extends ScrollView implements OnClick
 	@Override
 	public void onClick(View v) {
 		
+		
+	}
+	
+	@Override
+	public void onDateSet(DatePicker view, int year, int monthOfYear,
+			int dayOfMonth) {
+		// TODO Auto-generated method stub
 		
 	}
 	

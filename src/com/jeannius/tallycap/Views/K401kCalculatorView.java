@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -14,7 +13,7 @@ import com.jeannius.tallycap.R;
 import com.jeannius.tallycap.Models.CalculatorsModel;
 import com.jeannius.tallycap.util.MyEditText;
 
-public class K401kCalculatorView extends MyScrollViewWithDate implements OnClickListener{
+public class K401kCalculatorView extends MyScrollViewWithDate {
 	
 	private MyEditText annualSalary, contribution, yearsToRetirement, rateOfReturn, annualIncrease,
 	currentSavings, employerMatch, employerLimit;

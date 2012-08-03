@@ -10,7 +10,7 @@ import org.achartengine.model.TimeSeries;
 import org.achartengine.model.XYSeries;
 
 import android.content.Context;
-import android.view.View;
+import android.util.Log;
 
 import com.jeannius.tallycap.CalculatorActivity;
 import com.jeannius.tallycap.R;
@@ -26,74 +26,71 @@ public abstract class CalculatorAbstractModel  {
 	
 	//this function calculates the payment
 		protected double CalculateLoanPayment(double interest, double amount, int length, String Payfrequency, Calendar StartDate, String LengthFrequency){
-			int newN = 0;		
-			
-			Calendar clonerFinalDate = Calendar.getInstance();
-			clonerFinalDate =(Calendar) StartDate.clone();
-			
-			Calendar clonerDate2 = Calendar.getInstance();
-			clonerDate2 =(Calendar) StartDate.clone();
-			
-//			dateformat.applyPattern(DATE_FORMAT3);
-//			int before = clonerFinalDate.get(Calendar.DAY_OF_WEEK);
-			
-			if(LengthFrequency.equals(CalculatorActivity.YEARLY)) clonerFinalDate.add(Calendar.YEAR, length);
-			else if(LengthFrequency.equals(CalculatorActivity.MONTHLY)) clonerFinalDate.add(Calendar.MONTH, length);
-			else if(LengthFrequency.equals(CalculatorActivity.WEEKLY)) clonerFinalDate.add(Calendar.WEEK_OF_MONTH, length);
-			
-//			int after = clonerFinalDate.get(Calendar.DAY_OF_WEEK);
-			
-//			clonerFinalDate.add(Calendar.DAY_OF_MONTH, (before-after));
-			
-
-			if(Payfrequency.equals( CalculatorActivity.WEEKLY)){			
-				interest = interest/5200;
-				while(clonerDate2.before(clonerFinalDate)){
-					clonerDate2.add(Calendar.WEEK_OF_MONTH, 1);
-					newN++;
-				}			
 				
-			}
-			else if(Payfrequency.equals(CalculatorActivity.BIWEEKLY)){
-				interest = interest/2600;
-				while(clonerDate2.before(clonerFinalDate)){
-					clonerDate2.add(Calendar.WEEK_OF_MONTH, 2);
-					newN++;
-				}
-			}
-			else if(Payfrequency.equals(CalculatorActivity.MONTHLY)){
-				interest = interest/1200;
-				while(clonerDate2.before(clonerFinalDate)){
-					
-					clonerDate2.add(Calendar.MONTH, 1);
-					newN++;
-//					Log.v("LENGTH DURING/ CURRENT DATE / TARGET DATE", 
-//							String.format("%d / %s / %s", newN , dateformat.format(clonerDate2.getTime()), dateformat.format(clonerFinalDate.getTime())));
-					
-				}
-			}
-			else{
-				newN = length;
-				interest= interest/1200;
-			}			
 			
-//			Log.v("INTEREST", String.valueOf(interest));
-//			Log.v("LENGTH FINAL", String.valueOf(newN));
+//			Calendar clonerFinalDate = Calendar.getInstance();
+//			clonerFinalDate =(Calendar) StartDate.clone();
+//			
+//			Calendar clonerDate2 = Calendar.getInstance();
+//			clonerDate2 =(Calendar) StartDate.clone();
+//			
+//
+//			int newN = 0;	
+//			if(LengthFrequency.equals(CalculatorActivity.YEARLY)) clonerFinalDate.add(Calendar.YEAR, length);
+//			else if(LengthFrequency.equals(CalculatorActivity.MONTHLY)) clonerFinalDate.add(Calendar.MONTH, length);
+//			else if(LengthFrequency.equals(CalculatorActivity.WEEKLY)) clonerFinalDate.add(Calendar.WEEK_OF_MONTH, length);
+//			
+//			Log.v("PRE CALD", "Date target:" + clonerFinalDate.getTime().toString());
+//			if(Payfrequency.equals( CalculatorActivity.WEEKLY)){			
+//				interest = interest/5200;
+//				while(clonerDate2.before(clonerFinalDate)){
+//					clonerDate2.add(Calendar.WEEK_OF_MONTH, 1);
+//					newN++;
+//				}			
+//				
+//			}
+//			else if(Payfrequency.equals(CalculatorActivity.BIWEEKLY)){
+//				interest = interest/2600;
+//				while(clonerDate2.before(clonerFinalDate)){
+//					clonerDate2.add(Calendar.WEEK_OF_MONTH, 2);
+//					newN++;
+//				}
+//			}
+//			else if(Payfrequency.equals(CalculatorActivity.MONTHLY)){
+//				interest = interest/1200;
+//				while(clonerDate2.before(clonerFinalDate)){
+//					
+//					clonerDate2.add(Calendar.MONTH, 1);
+//					newN++;
+//					Log.v("CALC", String.format("Date before: %s, lenght: %d", clonerDate2.getTime().toString(), newN));
+//				}
+//			}
+//			else{
+//				newN = length;
+//				interest= interest/1200;
+//			}			
+//			
+			
+			
+			
+			interest = interestCalculator(interest, Payfrequency);			
+			int newN =  lengthCalculator(length, Payfrequency, StartDate, LengthFrequency);	
+			
+			Log.v("LOANAGE", String.format("Interest: %f, length: %d", interest, newN));
+
 			double u = Math.pow(1+interest, newN);
-//			Log.v("1 + INTEREST", String.valueOf(u));
+
 			double top = amount*(interest*u);
-//			Log.v("TOP", String.valueOf(top));
+
 			double bottom = (u-1);
-//			Log.v("BOTTOM", String.valueOf(bottom));
+
 			double a = top/bottom;
-//			Log.v("TOP/BOTTOM", String.valueOf(a));
+
 			long factor = (long)Math.pow(10, 2);
 			a = a * factor;
 			long tmp = Math.round(a);
 			double fine = (double)tmp/factor;
-			//zip = String.format("n: %d\npayfreq: %s\nlenghtfreq: %s\nNewN: %d\nPay: %f", n, Payfrequency,LengthFrequency, newN, fine);
-//			Log.v("FINAL", String.valueOf(fine));
-			//return zip;
+		
 			return  fine;
 
 		}
@@ -368,14 +365,61 @@ public abstract class CalculatorAbstractModel  {
 		
 		
 		
+		/**
+		 * this function calculate the interest based on pay period
+		 * 
+		 * 
+		 */
+			
+		protected double interestCalculator(double APR, String payFrequency ){
+			
+			
+			if(payFrequency.equals(CalculatorActivity.WEEKLY)) APR= APR/5200;
+			else if(payFrequency.equals(CalculatorActivity.BIWEEKLY)) APR= APR/2600;
+			else if(payFrequency.equals(CalculatorActivity.MONTHLY)) APR= APR/1200;
+			else if(payFrequency.equals(CalculatorActivity.YEARLY)) APR= APR/100;
+							
+			return APR;
+		}
 		
 		
 		
-		
-		
-		
-		
-		
+		protected int lengthCalculator(int length, String payFrequency, Calendar StartDate, String lengthFrequency){
+			int nl =0;
+			int field =0;
+			int fieldForFinal =0;
+			int add =1;
+			
+			Calendar finalDate = (Calendar) StartDate.clone();
+			Calendar clonerDate = (Calendar) StartDate.clone();
+			
+			if(lengthFrequency.equals(CalculatorActivity.YEARLY)) fieldForFinal=Calendar.YEAR;
+			else if(lengthFrequency.equals(CalculatorActivity.MONTHLY)) fieldForFinal=Calendar.MONTH;
+			else if(lengthFrequency.equals(CalculatorActivity.WEEKLY)) fieldForFinal=Calendar.WEEK_OF_MONTH;
+			
+			finalDate.add(fieldForFinal, length);
+			
+			if(payFrequency.equals(CalculatorActivity.WEEKLY)) field = Calendar.WEEK_OF_MONTH;
+			else if(payFrequency.equals(CalculatorActivity.BIWEEKLY)){
+				field = Calendar.WEEK_OF_MONTH;
+				add = 2;
+			}
+			else if(payFrequency.equals(CalculatorActivity.MONTHLY)) field = Calendar.MONTH;
+			else if(payFrequency.equals(CalculatorActivity.YEARLY)) field = Calendar.YEAR;
+
+			
+			
+//			Log.v("PRE CALD", "Date target:" + finalDate.getTime().toString());
+			while(clonerDate.before(finalDate)){
+				clonerDate.add(field, add);
+				nl++;
+//				Log.v("CALC", String.format("Date before: %s, lenght: %d", clonerDate.getTime().toString(), nl));
+			}
+			
+//			Log.v("Calc Final", String.format("Target date: %s, Final date: %s", finalDate.getTime().toString(), clonerDate.getTime().toString()));
+			
+			return nl;
+		}
 		
 		
 		

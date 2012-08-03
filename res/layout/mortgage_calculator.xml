@@ -141,8 +141,9 @@
             android:layout_alignBottom="@+id/textView5"
             android:layout_alignLeft="@+id/MortgageLengthSpinner"
             android:ems="10"
-            android:hint="@string/enter_amount" />
-
+            android:hint="@string/enter_interest"
+            android:width="100dp" />
+
         <com.jeannius.tallycap.util.MyEditText
             android:id="@+id/MortgageDownPaymentMyEditText"
             android:layout_width="wrap_content"
@@ -150,6 +151,7 @@
             android:layout_alignBaseline="@+id/textView6"
             android:layout_alignLeft="@+id/MortgageYearlyTaxesMyEditText"
             android:ems="10"
+            android:hint="@string/enter_interest"
             android:width="100dp" />
 
         <Spinner
@@ -159,6 +161,16 @@
             android:layout_alignBaseline="@id/textView6"
             android:layout_marginLeft="15dp"
             android:layout_toRightOf="@id/MortgageDownPaymentMyEditText"
+            android:entries="@array/fixed_vs_percent" />
+
+        <Spinner
+            android:id="@+id/MortgageYearlyTaxesSelectionSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/textView5"
+            android:layout_alignTop="@+id/textView5"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/MortgageYearlyTaxesMyEditText"
             android:entries="@array/fixed_vs_percent" />
 
     </RelativeLayout>

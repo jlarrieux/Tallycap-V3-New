@@ -1,12 +1,10 @@
 package com.jeannius.tallycap.Views;
 
-import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View.OnClickListener;
 import android.widget.DatePicker;
 
-public class SavingsPlannerCalculatorView extends MyScrollViewWithDate implements OnClickListener, OnDateSetListener {
+public class SavingsPlannerCalculatorView extends MyScrollViewWithDate  {
 
 	public SavingsPlannerCalculatorView(Context context) {
 		super(context);
