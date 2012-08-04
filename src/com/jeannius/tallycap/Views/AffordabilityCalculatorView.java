@@ -1,19 +1,19 @@
 package com.jeannius.tallycap.Views;
 
-import com.google.ads.l;
-import com.jeannius.tallycap.R;
-import com.jeannius.tallycap.Models.CalculatorsModel;
-import com.jeannius.tallycap.util.MyEditText;
-
 import android.content.Context;
 import android.content.res.Resources;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.jeannius.tallycap.CalculatorActivity;
+import com.jeannius.tallycap.R;
+import com.jeannius.tallycap.Models.CalculatorsModel;
+import com.jeannius.tallycap.util.MyEditText;
 
 public class AffordabilityCalculatorView extends MyScrollViewWithDate {
 	
@@ -59,9 +59,10 @@ public class AffordabilityCalculatorView extends MyScrollViewWithDate {
 		
 		interestRate.setMax(1000);
 		length.setMax(500);
+		interestRate.setMin(0.0001);
 		
 		amount.setRequired(true);
-		
+		interestRate.setRequired(true);
 		length.setRequired(true);
 		
 		calculate.setOnClickListener(this);
@@ -80,11 +81,31 @@ public class AffordabilityCalculatorView extends MyScrollViewWithDate {
 		if(id == R.id.AffordabilityCalculateButton){
 			
 			s+= amount.validate();
-			s+= interestRate.validate();
+			
 			s+= length.validate();
+			
+				s+=interestRate.validate();
+			
 			
 			if(s.length()>0) Toast.makeText(context, s, Toast.LENGTH_LONG).show();
 			else{
+				
+				Double am = Double.valueOf(amount.getText().toString());
+				Integer l = Integer.valueOf(length.getText().toString());
+				Double in =0.0;
+				if(interestRate.getText().toString().length()>0)in = Double.valueOf(interestRate.getText().toString());
+				String frequency = "";
+				int pos = amountFrequency.getSelectedItemPosition();
+				
+				if(pos==0) frequency = CalculatorActivity.WEEKLY;
+				else if(pos==1) frequency = CalculatorActivity.BIWEEKLY;
+				else if(pos==2) frequency = CalculatorActivity.MONTHLY;
+				else if(pos==3) frequency = CalculatorActivity.YEARLY;
+				
+				Log.v("BEFORE AFFORD", String.format("amount: %f, interest: %f, length: %d", am, in, l));
+				double j = Model.AffordabilityCalculateTheValue(am, in, l, frequency);
+				
+				result.setText(String.format(getResources().getString(R.string.affordability_statement), nf.format(j)));
 				
 			}
 		}

@@ -18,7 +18,7 @@ import com.jeannius.tallycap.R;
 
 public abstract class CalculatorAbstractModel  {
 	private static final String DATE_FORMAT2 = "MMMM dd yyyy"; //month, date year
-	private static final String DATE_FORMAT3 = "EEEE MMMM dd yyyy"; //day month date year
+//	private static final String DATE_FORMAT3 = "EEEE MMMM dd yyyy"; //day month date year
 	private static final SimpleDateFormat dateformat = new SimpleDateFormat(DATE_FORMAT2);
 	
 	
@@ -86,10 +86,8 @@ public abstract class CalculatorAbstractModel  {
 
 			double a = top/bottom;
 
-			long factor = (long)Math.pow(10, 2);
-			a = a * factor;
-			long tmp = Math.round(a);
-			double fine = (double)tmp/factor;
+			
+			double fine = Rounder(a);
 		
 			return  fine;
 
@@ -202,10 +200,8 @@ public abstract class CalculatorAbstractModel  {
 			}
 			
 			
-			long factor = (long)Math.pow(10, 2);
-			f = f * factor;
-			long tmp = Math.round(f);
-			double fine = (double)tmp/factor;
+			
+			double fine = Rounder(f);
 			return fine;		
 		}
 		
@@ -282,6 +278,8 @@ public abstract class CalculatorAbstractModel  {
 			
 			if(currentBalance> creditLimit) payment += overTheLimitFee;
 			if(payment<minpay) payment =minpay;
+			payment = Rounder(payment);
+			
 			return payment;
 		}
 		
@@ -421,7 +419,19 @@ public abstract class CalculatorAbstractModel  {
 			return nl;
 		}
 		
+		/**
+		 * this function round the number
+		 */
 		
+		protected double Rounder(double number){
+			
+			long factor = (long)Math.pow(10, 2);
+			number = number * factor;
+			double tmp = Math.round(number);
+			double fine = (double)tmp/factor;
+			
+			return fine;
+		}
 		
 		
 		

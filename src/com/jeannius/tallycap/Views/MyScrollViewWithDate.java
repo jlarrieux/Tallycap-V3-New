@@ -1,5 +1,6 @@
 package com.jeannius.tallycap.Views;
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -14,13 +15,13 @@ import com.jeannius.tallycap.util.MyUneditableDateEditText;
 public abstract class MyScrollViewWithDate extends ScrollView implements OnClickListener, OnDateSetListener{
 	
 	private MyUneditableDateEditText dateText;
-	protected NumberFormat nf;
+	protected DecimalFormat nf;
 	
 	public MyScrollViewWithDate(Context context) {
 		super(context);
 		dateText = new MyUneditableDateEditText(context);
 		dateText.setOnClickListener(this);
-		nf = NumberFormat.getInstance(getResources().getConfiguration().locale);
+		nf = (DecimalFormat) NumberFormat.getInstance(getResources().getConfiguration().locale);
 	}
 	
 	public MyUneditableDateEditText getMyUneditableDateEditText(){
