@@ -10,7 +10,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jeannius.tallycap.CalculatorActivity;
 import com.jeannius.tallycap.R;
 import com.jeannius.tallycap.Models.CalculatorsModel;
 import com.jeannius.tallycap.util.MyEditText;
@@ -94,13 +93,8 @@ public class AffordabilityCalculatorView extends MyScrollViewWithDate {
 				Integer l = Integer.valueOf(length.getText().toString());
 				Double in =0.0;
 				if(interestRate.getText().toString().length()>0)in = Double.valueOf(interestRate.getText().toString());
-				String frequency = "";
-				int pos = amountFrequency.getSelectedItemPosition();
-				
-				if(pos==0) frequency = CalculatorActivity.WEEKLY;
-				else if(pos==1) frequency = CalculatorActivity.BIWEEKLY;
-				else if(pos==2) frequency = CalculatorActivity.MONTHLY;
-				else if(pos==3) frequency = CalculatorActivity.YEARLY;
+							
+				String frequency = Model.PayfrequencyCalculatorInternal(amountFrequency.getSelectedItemPosition());
 				
 				Log.v("BEFORE AFFORD", String.format("amount: %f, interest: %f, length: %d", am, in, l));
 				double j = Model.AffordabilityCalculateTheValue(am, in, l, frequency);

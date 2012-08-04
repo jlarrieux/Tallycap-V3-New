@@ -75,7 +75,9 @@ public class LoanCalculatorView extends MyScrollViewWithDate  {
 		length.setRequired(true);
 		interest.setRequired(true);
 		interest.setMax(1000);
+		interest.setMin(0.0001);
 		length.setMax(500);
+		length.setMin(1);
 		
 		lenghtSelector.setSelection(2);
 		unDate.setOnClickListener(this);
@@ -99,10 +101,9 @@ public class LoanCalculatorView extends MyScrollViewWithDate  {
 				Double i =Double.valueOf(interest.getText().toString());
 				Double p =Double.valueOf(amount.getText().toString());
 				Integer l =Integer.valueOf(length.getText().toString());
-				String f="";
-				if(lenghtSelector.getSelectedItemPosition()==0) f= CalculatorActivity.WEEKLY;
-				else if(lenghtSelector.getSelectedItemPosition()==1) f= CalculatorActivity.MONTHLY;
-				else if(lenghtSelector.getSelectedItemPosition()==2) f= CalculatorActivity.YEARLY;
+				
+				String f=Model.lengthFrequencyCalculator(lenghtSelector.getSelectedItemPosition());
+
 				
 				double j = Model.LoanCalculateTheValue(i, p, l, unDate.c, f);
 				

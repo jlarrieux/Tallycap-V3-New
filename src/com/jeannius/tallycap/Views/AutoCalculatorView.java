@@ -80,7 +80,7 @@ public class AutoCalculatorView extends MyScrollViewWithDate {
 		tradeInValue.setRequired(false);
 		downPayment.setRequired(false);
 		interest.setMax(1000);
-		
+		interest.setMin(0.0001);
 		
 		length.setSelection(2);
 		calculate.setOnClickListener(this);

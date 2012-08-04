@@ -25,6 +25,8 @@ public class CalculatorActivity extends MyAbstractActivity {
 	public static String MONTHLY="Monthly";
 	public static String YEARLY="Yearly";
 	
+	
+	
 	public Locale locale;
 	private CalculatorViewPagerAdapter mAdapter;
 	private myViewPager mPager;

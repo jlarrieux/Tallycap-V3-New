@@ -83,7 +83,9 @@ public class K401kCalculatorView extends MyScrollViewWithDate {
 		
 		
 		yearsToRetirement.setMax(100);
-		rateOfReturn.setMax(100);
+		yearsToRetirement.setMin(1);
+		rateOfReturn.setMax(1000);
+		rateOfReturn.setMin(0.0001);
 		annualIncrease.setMax(1000);
 		employerMatch.setMax(1000);
 		employerLimit.setMax(1000);

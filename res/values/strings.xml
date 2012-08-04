@@ -100,5 +100,7 @@
                         <string name="percent">Percent</string>
                         <string name="k401k_final_value">Your 401K final value is $%s</string>
                         <string name="affordability_statement">You can afford up to $%s</string>
+                        <string name="future_savings_statement">Your future savings will be $%s</string>
+                        <string name="savings_planner_statement">You would need to save $%1$s %2$s</string>
 
 </resources>

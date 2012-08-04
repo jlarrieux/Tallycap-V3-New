@@ -26,53 +26,7 @@ public abstract class CalculatorAbstractModel  {
 	
 	//this function calculates the payment
 		protected double CalculateLoanPayment(double interest, double amount, int length, String Payfrequency, Calendar StartDate, String LengthFrequency){
-				
-			
-//			Calendar clonerFinalDate = Calendar.getInstance();
-//			clonerFinalDate =(Calendar) StartDate.clone();
-//			
-//			Calendar clonerDate2 = Calendar.getInstance();
-//			clonerDate2 =(Calendar) StartDate.clone();
-//			
-//
-//			int newN = 0;	
-//			if(LengthFrequency.equals(CalculatorActivity.YEARLY)) clonerFinalDate.add(Calendar.YEAR, length);
-//			else if(LengthFrequency.equals(CalculatorActivity.MONTHLY)) clonerFinalDate.add(Calendar.MONTH, length);
-//			else if(LengthFrequency.equals(CalculatorActivity.WEEKLY)) clonerFinalDate.add(Calendar.WEEK_OF_MONTH, length);
-//			
-//			Log.v("PRE CALD", "Date target:" + clonerFinalDate.getTime().toString());
-//			if(Payfrequency.equals( CalculatorActivity.WEEKLY)){			
-//				interest = interest/5200;
-//				while(clonerDate2.before(clonerFinalDate)){
-//					clonerDate2.add(Calendar.WEEK_OF_MONTH, 1);
-//					newN++;
-//				}			
-//				
-//			}
-//			else if(Payfrequency.equals(CalculatorActivity.BIWEEKLY)){
-//				interest = interest/2600;
-//				while(clonerDate2.before(clonerFinalDate)){
-//					clonerDate2.add(Calendar.WEEK_OF_MONTH, 2);
-//					newN++;
-//				}
-//			}
-//			else if(Payfrequency.equals(CalculatorActivity.MONTHLY)){
-//				interest = interest/1200;
-//				while(clonerDate2.before(clonerFinalDate)){
-//					
-//					clonerDate2.add(Calendar.MONTH, 1);
-//					newN++;
-//					Log.v("CALC", String.format("Date before: %s, lenght: %d", clonerDate2.getTime().toString(), newN));
-//				}
-//			}
-//			else{
-//				newN = length;
-//				interest= interest/1200;
-//			}			
-//			
-			
-			
-			
+							
 			interest = interestCalculator(interest, Payfrequency);			
 			int newN =  lengthCalculator(length, Payfrequency, StartDate, LengthFrequency);	
 			
@@ -391,11 +345,19 @@ public abstract class CalculatorAbstractModel  {
 			Calendar finalDate = (Calendar) StartDate.clone();
 			Calendar clonerDate = (Calendar) StartDate.clone();
 			
+			int before = finalDate.get(Calendar.DAY_OF_WEEK);
+			
 			if(lengthFrequency.equals(CalculatorActivity.YEARLY)) fieldForFinal=Calendar.YEAR;
 			else if(lengthFrequency.equals(CalculatorActivity.MONTHLY)) fieldForFinal=Calendar.MONTH;
 			else if(lengthFrequency.equals(CalculatorActivity.WEEKLY)) fieldForFinal=Calendar.WEEK_OF_MONTH;
 			
 			finalDate.add(fieldForFinal, length);
+			
+			int after = finalDate.get(Calendar.DAY_OF_WEEK);
+			
+			if(fieldForFinal==Calendar.WEEK_OF_MONTH)finalDate.add(Calendar.DAY_OF_YEAR, (before-after));
+			
+			Log.v("CALC", String.format("bef: %d, aft: %d", before, after));
 			
 			if(payFrequency.equals(CalculatorActivity.WEEKLY)) field = Calendar.WEEK_OF_MONTH;
 			else if(payFrequency.equals(CalculatorActivity.BIWEEKLY)){
@@ -407,14 +369,14 @@ public abstract class CalculatorAbstractModel  {
 
 			
 			
-//			Log.v("PRE CALD", "Date target:" + finalDate.getTime().toString());
+			Log.v("PRE CALD", "Date target:" + finalDate.getTime().toString());
 			while(clonerDate.before(finalDate)){
 				clonerDate.add(field, add);
 				nl++;
-//				Log.v("CALC", String.format("Date before: %s, lenght: %d", clonerDate.getTime().toString(), nl));
+				Log.v("CALC", String.format("Date before: %s, lenght: %d", clonerDate.getTime().toString(), nl));
 			}
 			
-//			Log.v("Calc Final", String.format("Target date: %s, Final date: %s", finalDate.getTime().toString(), clonerDate.getTime().toString()));
+			Log.v("Calc Final", String.format("Target date: %s, Final date: %s", finalDate.getTime().toString(), clonerDate.getTime().toString()));
 			
 			return nl;
 		}
@@ -432,8 +394,6 @@ public abstract class CalculatorAbstractModel  {
 			
 			return fine;
 		}
-		
-		
 		
 		
 		

@@ -108,9 +108,9 @@
             android:layout_alignLeft="@+id/FutureSavingsInterestMyEditText"
             android:ems="10"
             android:width="100dp" />
-
+
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/FutureSavingsAmountSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/textView1"
@@ -118,9 +118,9 @@
             android:layout_marginLeft="15dp"
             android:layout_toRightOf="@id/FutureSavingsAmountEditText"
             android:entries="@array/frequency_array" />
-
+
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/FutureSavingsLengthSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/textView3"

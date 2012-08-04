@@ -78,6 +78,7 @@ public class CreditCardCalculatorView extends MyScrollViewWithDate  {
 		balance.setRequired(true);
 		interest.setRequired(true);
 		interest.setMax(1000);
+		interest.setMin(0.0001);
 		//test
 	}
 

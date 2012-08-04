@@ -67,20 +67,22 @@
             android:layout_below="@id/SavingsPlannerResultTextView"
             android:layout_marginTop="30dp"
             android:gravity="center" >
-
+
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/SavingsPlannerCalculateButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:minWidth="120dip"
-                android:text="@string/calculate" /><Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:enabled="false"
-                android:minWidth="120dip"
-                android:text="@string/what_if" />
+                android:text="@string/calculate" />
+
+<Button
+    android:id="@+id/SavingsPlannerWhatIfButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:enabled="false"
+    android:minWidth="120dip"
+    android:text="@string/what_if" />
 
         </LinearLayout>
 
@@ -115,9 +117,9 @@
             android:layout_alignBottom="@+id/textView4"
             android:layout_alignLeft="@+id/SavingsPlanerLengthMyEditText"
             android:ems="10" />
-
+
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/SavingsPlannerAmountSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/textView3"
@@ -125,9 +127,9 @@
             android:layout_alignTop="@id/textView3"
             android:layout_marginTop="30dp"
             android:entries="@array/frequency_array" />
-
+
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/SavingsPlannerLengthSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/textView2"

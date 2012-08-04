@@ -81,6 +81,7 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 	}
 	
 	
+	//calculate P given A,i,n
 	public double AffordabilityCalculateTheValue(double amount, double interest, int length, String frequency){
 					
 		Log.v("DURING1 AFFORD", String.format("amount: %f", amount));
@@ -101,20 +102,94 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 	}
 	
 	
-//	
-//	private double futureValueCalculator(double amount, double interest, int length){
-//		
-//		double u = Math.pow(1+interest, length);
-//
-//		double top = amount*u;
-//
-//	
-//
-//		top =Rounder(top);
-//		Log.v("FUTURE", String.format("Amount: %f , top: %f , result: %f", amount, top, top));
-//		return  top;
-//		
-//	}
+	//calculate F given A,i,n
+	public double FutureSavingsCalculateTheValue(double amount, double interest, int length, String amountFrequency, String lengthFrequency, double cur){
+		
+		length = lengthCalculator(length, amountFrequency, Calendar.getInstance(), lengthFrequency);
+		interest = interestCalculator(interest, amountFrequency);
+		
+		
+		double u = Math.pow(1+interest, length);
+
+		double top = amount*(u-1);
+		double bottom = interest;
+		
+		double F= top/bottom;
+				
+		double f1 =cur*u;
+		
+		F= F+ f1;
+
+		F= Rounder(F);
+
+		
+		Log.v("FUTURE", String.format("Amount: %f , top: %f , interest: %f, calculated length: %d, aF: %s, lf: %s", amount, top, interest, length, amountFrequency, lengthFrequency));
+		return  F;
+		
+	}
+	
+	
+	
+	//calculate A given F,i,n
+	public double SavingsPlannerCalculateTheValue(double goal, double interest, int length, String amountFrequency, String lengthFrequency, double curr){
+		
+		length = lengthCalculator(length, amountFrequency, Calendar.getInstance(), lengthFrequency);
+		interest = interestCalculator(interest, amountFrequency);
+		
+		
+		
+		double u = Math.pow(1+interest, length);
+		curr = curr*u;
+		goal = goal -curr;
+		double top = interest*goal;
+		double bottom = u-1;
+		
+		double A = top/bottom;
+		
+		A= Rounder(A);
+		Log.v("SAVINGS3", String.format("interest: %f, GOAL:%f, length: %d, u: %f, top: %f, bottom: %f, Final: %f", interest,goal, length, u, top, bottom, A));
+		return A;
+	}
+	
+	
+	
+	
+	
+	
+	
+	public String lengthFrequencyCalculator(int pos){
+		
+		String frequency ="";
+		
+		if(pos==0) frequency = CalculatorActivity.WEEKLY;
+		else if(pos==1) frequency = CalculatorActivity.MONTHLY;
+		else if(pos==2) frequency = CalculatorActivity.YEARLY;	
+				
+		return frequency;
+	}
+	
+	
+	
+	
+	
+	
+	public String PayfrequencyCalculatorInternal(int pos){
+		
+		String frequency ="";
+		
+		if(pos==0) frequency = CalculatorActivity.WEEKLY;
+		else if(pos==1) frequency = CalculatorActivity.BIWEEKLY;
+		else if(pos==2) frequency = CalculatorActivity.MONTHLY;
+		else if(pos==3) frequency = CalculatorActivity.YEARLY;
+		
+		return frequency;
+	}
+	
+	
+
+	
+	
+	
 	
 	
 	

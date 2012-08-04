@@ -99,6 +99,9 @@ public class MyEditText extends EditText {
 			}
 	}
 	
+	
+	//TODO: CHANGES THE MESSAGE TO STRING RESOURCES
+	
 	public String validate(){
 		//3 steps: required, min, max
 		if(name== null) throw new IllegalStateException("Name of MyEditText not set");

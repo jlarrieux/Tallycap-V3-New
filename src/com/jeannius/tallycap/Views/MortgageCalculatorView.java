@@ -80,6 +80,7 @@ public class MortgageCalculatorView extends MyScrollViewWithDate implements  OnI
 		amount.setRequired(true);
 		interest.setRequired(true);
 		interest.setMax(1000);
+		interest.setMin(0.0001);
 		yearlyTaxes.setRequired(false);
 		downPayment.setRequired(false);
 		
