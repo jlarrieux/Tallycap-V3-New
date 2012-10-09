@@ -3,6 +3,7 @@ package com.jeannius.tallycap;
 import java.util.Locale;
 
 import android.os.Bundle;
+import android.view.ActionMode;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.jeannius.tallycap.util.CalculatorViewPagerAdapter;
