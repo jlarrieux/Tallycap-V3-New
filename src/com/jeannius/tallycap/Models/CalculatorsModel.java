@@ -103,27 +103,31 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 	
 	
 	//calculate F given A,i,n
-	public double FutureSavingsCalculateTheValue(double amount, double interest, int length, String amountFrequency, String lengthFrequency, double cur){
+	public double FutureSavingsCalculateTheValue(double amount, double interest, int length, String amountFrequency, String lengthFrequency, double cur, boolean interestState){
 		
 		length = lengthCalculator(length, amountFrequency, Calendar.getInstance(), lengthFrequency);
 		interest = interestCalculator(interest, amountFrequency);
+		double F =0.0;
+		if(interestState){
+			
+			double u = Math.pow(1+interest, length);
+			double top = amount*(u-1);
+			double bottom = interest;
+			
+			F= top/bottom;					
+			double f1 =cur*u;
+			
+			F= F+ f1;
+			F= Rounder(F);			
+			Log.v("FUTURE-B", String.format("Amount: %f , top: %f , interest: %f, calculated length: %d, aF: %s, lf: %s, interest?: %b", amount, top, interest, length, amountFrequency, lengthFrequency, interestState));
+			
+		}
+		else{
 		
+			F = Rounder(amount * length + cur);			
+			Log.v("FUTURE-B", String.format("Amount: %f, interest: %f, calculated length: %d, current savings: %f, final value: %f, interest?: %b",amount, interest, length, cur, F, interestState  ));
+		}
 		
-		double u = Math.pow(1+interest, length);
-
-		double top = amount*(u-1);
-		double bottom = interest;
-		
-		double F= top/bottom;
-				
-		double f1 =cur*u;
-		
-		F= F+ f1;
-
-		F= Rounder(F);
-
-		
-		Log.v("FUTURE", String.format("Amount: %f , top: %f , interest: %f, calculated length: %d, aF: %s, lf: %s", amount, top, interest, length, amountFrequency, lengthFrequency));
 		return  F;
 		
 	}
@@ -131,23 +135,29 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 	
 	
 	//calculate A given F,i,n
-	public double SavingsPlannerCalculateTheValue(double goal, double interest, int length, String amountFrequency, String lengthFrequency, double curr){
+	public double SavingsPlannerCalculateTheValue(double goal, double interest, int length, String amountFrequency, String lengthFrequency, double curr, boolean interestState){
 		
 		length = lengthCalculator(length, amountFrequency, Calendar.getInstance(), lengthFrequency);
 		interest = interestCalculator(interest, amountFrequency);
 		
-		
-		
+		double A =0.0;
+		if(interestState){
 		double u = Math.pow(1+interest, length);
 		curr = curr*u;
 		goal = goal -curr;
 		double top = interest*goal;
 		double bottom = u-1;
 		
-		double A = top/bottom;
+		A = top/bottom;
 		
 		A= Rounder(A);
-		Log.v("SAVINGS3", String.format("interest: %f, GOAL:%f, length: %d, u: %f, top: %f, bottom: %f, Final: %f", interest,goal, length, u, top, bottom, A));
+		Log.v("SAVINGS-A", String.format("interest: %f, GOAL:%f, length: %d, u: %f, top: %f, bottom: %f, Final: %f, interest?: %b", interest,goal, length, u, top, bottom, A, interestState));
+		}
+		
+		else{
+			A = Rounder(goal/length - curr);
+			Log.v("SAVINGS-B", String.format("interest: %f, GOAL:%f, length: %d,  Final: %f, interest?: %b", interest,goal, length,  A, interestState));
+		}
 		return A;
 	}
 	
@@ -189,6 +199,11 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 
 	
 	
+	public double NoInterestCalculation(){
+		
+		
+		return 0.0;
+	}
 	
 	
 	

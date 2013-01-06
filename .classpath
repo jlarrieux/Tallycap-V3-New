@@ -2,14 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry kind="src" path="gen">
-		<attributes>
-			<attribute name="ignore_optional_problems" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/Android/extras/android/support/v4/android-support-v4.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Android/extras/google/admob_ads_sdk/GoogleAdMobAdsSdk-6.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Android/extras/google/admob_ads_sdk/GoogleAdMobAdsSdk-6.2.1.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/Android/extras/google/analytics_sdk/libGoogleAnalytics.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/Android/android-sdk/API/achartengine-1.1.0-rc1.jar"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

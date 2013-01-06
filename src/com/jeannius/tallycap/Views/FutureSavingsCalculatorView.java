@@ -66,11 +66,11 @@ public class FutureSavingsCalculatorView extends MyScrollViewWithDate  {
 		currentSavings.setName(r.getString(R.string.current_savings));
 		
 		amount.setRequired(true);
-		interest.setRequired(true);
+		interest.setRequired(false);
 		length.setRequired(true);
 		
 		interest.setMax(1000);
-		interest.setMin(0.0001);
+//		interest.setMin(0.0001);
 		length.setMax(1000);
 		length.setMin(1);
 		
@@ -90,7 +90,8 @@ public class FutureSavingsCalculatorView extends MyScrollViewWithDate  {
 		if(id==R.id.FutureSavingsCalculateButton){
 			
 			s+=amount.validate();
-			s+=interest.validate();
+			if(interest.getText().toString().length()>0) s+=interest.validate();
+			
 			s+=length.validate();
 			
 			
@@ -105,14 +106,20 @@ public class FutureSavingsCalculatorView extends MyScrollViewWithDate  {
 				if(currentSavings.getText().toString().length()>0)
 					cur = Double.valueOf(currentSavings.getText().toString());
 				Double am = Double.valueOf(amount.getText().toString());
-				Double in = Double.valueOf(interest.getText().toString());
+				
+				boolean interestState =false;
+				Double in = 0.0;
+				if(interest.getText().toString().length()>0){
+					in =Double.valueOf(interest.getText().toString());
+					interestState =true;
+				}
 				Integer l = Integer.valueOf(length.getText().toString());
 				
 				String amountFrequency=Model.PayfrequencyCalculatorInternal(amountSpinner.getSelectedItemPosition());
 				String lengthFrequency=Model.lengthFrequencyCalculator(lengthSpinner.getSelectedItemPosition());
 				
 				
-				double j = Model.FutureSavingsCalculateTheValue(am, in, l, amountFrequency, lengthFrequency, cur);
+				double j = Model.FutureSavingsCalculateTheValue(am, in, l, amountFrequency, lengthFrequency, cur, interestState);
 				
 				result.setText(String.format(getResources().getString(R.string.future_savings_statement), nf.format(j)));
 			}

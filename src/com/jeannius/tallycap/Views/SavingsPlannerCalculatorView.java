@@ -1,12 +1,7 @@
 package com.jeannius.tallycap.Views;
 
-import com.jeannius.tallycap.R;
-import com.jeannius.tallycap.Models.CalculatorsModel;
-import com.jeannius.tallycap.util.MyEditText;
-
 import android.content.Context;
 import android.content.res.Resources;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +9,10 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.jeannius.tallycap.R;
+import com.jeannius.tallycap.Models.CalculatorsModel;
+import com.jeannius.tallycap.util.MyEditText;
 
 public class SavingsPlannerCalculatorView extends MyScrollViewWithDate  {
 	
@@ -67,12 +66,12 @@ public class SavingsPlannerCalculatorView extends MyScrollViewWithDate  {
 		
 		goal.setRequired(true);
 		length.setRequired(true);
-		interest.setRequired(true);
+		
 		
 		length.setMax(1000);
 		length.setMin(1);
 		interest.setMax(1000);
-		interest.setMin(0.0001);
+		
 		goal.setMin(1);
 		
 		calculate.setOnClickListener(this);
@@ -92,15 +91,20 @@ public class SavingsPlannerCalculatorView extends MyScrollViewWithDate  {
 			
 			s+=goal.validate();
 			s+=length.validate();
-			s+=interest.validate();
+			if(interest.getText().toString().length()>0)s+=interest.validate();
 			
-//			Log.v("SAVINGS PLANNER", "Calculate started");
+
 			if(s.length()>0) Toast.makeText(context, s, Toast.LENGTH_LONG).show();
 			else{
 				
 				Double cur =0.0;
 				Double g = Double.valueOf(goal.getText().toString());
-				Double i = Double.valueOf(interest.getText().toString());
+				Double i = 0.0;
+				boolean interestState = false;
+				if(interest.getText().toString().length()>0){
+					i=Double.valueOf(interest.getText().toString());
+					interestState =true;
+				}
 				Integer l = Integer.valueOf(length.getText().toString());
 				if(currentSavings.getText().toString().length()>0) {
 					
@@ -117,9 +121,8 @@ public class SavingsPlannerCalculatorView extends MyScrollViewWithDate  {
 					String amF = Model.PayfrequencyCalculatorInternal(amountFrequency.getSelectedItemPosition());
 					
 					String leF = Model.lengthFrequencyCalculator(lengthFrequency.getSelectedItemPosition());
-	//				Log.v("SAVINGS", String.format("Af: %s, lf: %s, afspi: %d,lfspi: %d", amF, leF, amountFrequency.getSelectedItemPosition(), lengthFrequency.getSelectedItemPosition()));
-	//				Log.v("SAVINGS2", String.format("Amsp: %s, Lgthsp: %s", amountFrequency.getSelectedItem().toString(), lengthFrequency.getSelectedItem().toString()));
-					double j = Model.SavingsPlannerCalculateTheValue(g, i, l, amF, leF, cur);
+
+					double j = Model.SavingsPlannerCalculateTheValue(g, i, l, amF, leF, cur, interestState);
 					
 					result.setText(String.format(getResources().getString(R.string.savings_planner_statement), nf.format(j), amF));
 				}

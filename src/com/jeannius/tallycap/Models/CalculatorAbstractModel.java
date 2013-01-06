@@ -334,7 +334,16 @@ public abstract class CalculatorAbstractModel  {
 			return APR;
 		}
 		
-		
+		/**
+		 * 
+		 * @param length the provided length integer
+		 * @param payFrequency the provided payfrequency string
+		 * @param StartDate the provided start data
+		 * @param lengthFrequency the provided length frequency string
+		 * @return an integer representing the true length in weeks
+		 * 
+		 * this function takes in parameters above in return the time represented in # of weeks
+		 */
 		
 		protected int lengthCalculator(int length, String payFrequency, Calendar StartDate, String lengthFrequency){
 			int nl =0;
@@ -397,6 +406,7 @@ public abstract class CalculatorAbstractModel  {
 		
 		
 		
+	
 		
 		
 		
