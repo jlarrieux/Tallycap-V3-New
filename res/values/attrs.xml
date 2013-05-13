@@ -4,5 +4,16 @@
     <attr name="drawRed" format="boolean" />
   </declare-styleable>
   <declare-styleable name="MyUneditableEditTeXT"/>
+  
+  <declare-styleable name="MySeekBarWidget">
+      <attr name="max" format="integer"/>
+      <attr name="animation" format="integer"/>
+      <attr name="type">
+          <enum name="money" value="1"/>
+          <enum name="percent" value="2"/>
+      </attr>
+      <attr name="android:gravity"/>
+      <attr name="min" format="integer"/>
+  </declare-styleable>
     
 </resources>

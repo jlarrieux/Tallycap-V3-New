@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.jeannius.tallycap.R;
 import com.jeannius.tallycap.util.MyAbstractActivity;
@@ -76,9 +77,20 @@ public class HomeView1 extends RelativeLayout implements SubjectToObservers, OnC
 		clicked = (Button) v;
 	
 		if(clicked.getText().toString().contains(MyAbstractActivity.CALCULATOR)) state = MyAbstractActivity.CALCULATOR;
-		notifyObserver();
+		else{
+			Toast.makeText(context, "Button is not operational yet!", Toast.LENGTH_LONG).show();
+			state="";
+		}
+		
+		if(state.length()>2)		notifyObserver();
 		
 		
+		
+	}
+
+	@Override
+	public void removeObserver(ObserverOfSubject obs) {
+		// TODO Auto-generated method stub
 		
 	}
 

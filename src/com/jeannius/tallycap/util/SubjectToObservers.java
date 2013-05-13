@@ -5,5 +5,6 @@ public interface SubjectToObservers {
 	
 	void notifyObserver();
 	void registerObserver(ObserverOfSubject obs);
+	void removeObserver(ObserverOfSubject obs);
 	void removeObserver();
 }

@@ -13,10 +13,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jeannius.tallycap.CalculatorActivity;
 import com.jeannius.tallycap.R;
 import com.jeannius.tallycap.Models.CalculatorsModel;
 import com.jeannius.tallycap.util.MyEditText;
+import com.jeannius.tallycap.util.MySeekBarWidget;
 import com.jeannius.tallycap.util.MyUneditableDateEditText;
 
 public class LoanCalculatorView extends MyScrollViewWithDate  {
@@ -31,14 +31,31 @@ public class LoanCalculatorView extends MyScrollViewWithDate  {
 	private TextView result;
 	
 	
+	//NEW LOAN LAYOUT
+	public MySeekBarWidget m;
+	
 	public LoanCalculatorView(Context context) {
 		super(context);
 		this.context = context;		
 		LayoutInflater in = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		in.inflate(com.jeannius.tallycap.R.layout.loan_calculator, this);
 		
-		init();
+		
+		in.inflate(com.jeannius.tallycap.R.layout.new_loan_calculator, this);
+		init2();
+//		init();
 	}
+	
+	
+	
+	private void init2(){
+		
+		m=new MySeekBarWidget(context);
+		
+		m=(MySeekBarWidget) findViewById(R.id.mySeekBarWidget1);
+	}
+	
+	
+	
 	
 	private void init(){
 		amount = new MyEditText(context);

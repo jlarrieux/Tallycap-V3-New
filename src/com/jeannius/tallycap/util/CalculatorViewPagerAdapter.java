@@ -13,6 +13,8 @@ public class CalculatorViewPagerAdapter extends FragmentPagerAdapter {
 	
 	private int mCount = CalculatorActivity.NUM_TABS;
 	private Context context;
+	private int red;
+	private String f;
 	
 	public CalculatorViewPagerAdapter(FragmentManager fm, Context context) {
 		super(fm);
@@ -41,8 +43,8 @@ public class CalculatorViewPagerAdapter extends FragmentPagerAdapter {
 	
 	@Override
 	public CharSequence getPageTitle(int position) {
-		String f="";
-		int red =position % CalculatorActivity.NUM_TABS;
+		f="";
+		red =position % CalculatorActivity.NUM_TABS;
 		Resources r = context.getResources();
 		switch(red){
 		
@@ -72,6 +74,13 @@ public class CalculatorViewPagerAdapter extends FragmentPagerAdapter {
 	
 		}
 		
+		
+		
+		return f;
+	}
+	
+	
+	public String getF(){
 		return f;
 	}
 

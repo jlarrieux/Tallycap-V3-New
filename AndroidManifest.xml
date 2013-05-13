@@ -4,8 +4,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="15" />
+        android:minSdkVersion="11"
+        android:targetSdkVersion="17" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -14,10 +14,12 @@
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" 
-        android:theme="@style/MyTeam"      >
-        <activity android:name="CalculatorActivity" >
+        android:theme="@style/MyTeam"    >
+        
+        <activity android:name="CalculatorActivity" android:windowSoftInputMode="stateAlwaysHidden">
          
             </activity>
+            
         <activity android:name="HomeActivity" android:label="@string/app_name" >
             
                <intent-filter>
@@ -25,6 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
     </application>
 
 </manifest>

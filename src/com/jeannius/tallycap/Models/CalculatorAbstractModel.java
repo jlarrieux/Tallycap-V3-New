@@ -20,7 +20,10 @@ public abstract class CalculatorAbstractModel  {
 	private static final String DATE_FORMAT2 = "MMMM dd yyyy"; //month, date year
 //	private static final String DATE_FORMAT3 = "EEEE MMMM dd yyyy"; //day month date year
 	private static final SimpleDateFormat dateformat = new SimpleDateFormat(DATE_FORMAT2);
-	
+	public static final int[] color1 = {0xFFe48701, 0xFFa5bc4e, 0xFF1b95d9, 0xFFcaca9e, 0xFF6693b0, 0xFFf05e27, 0xFF86d1e4,
+		0xFFe4f9a0, 0xFFffd512, 0xFF75b000, 0xFF0662b0, 0xFFede8c6, 0xFFcc3300, 0xFFd1dfe7,
+		0xFF52d4ca, 0xFFc5e05d, 0xFFe7c174, 0xFFfff797, 0xFFc5f68f, 0xFFbdf1e6, 0xFF9e987d,
+		0xFFeb988d, 0xFF91c9e5, 0xFF93dc4a, 0xFFffb900, 0xFF9ebbcd, 0xFF009797, 0xFF0db2c2};
 	
 
 	

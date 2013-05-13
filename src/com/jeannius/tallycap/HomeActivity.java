@@ -40,5 +40,11 @@ public class HomeActivity extends MyAbstractActivity implements ObserverOfSubjec
 		homeView.removeObserver();
 	}
 
+	@Override
+	public void update(Object o) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

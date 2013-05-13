@@ -3,14 +3,13 @@ package com.jeannius.tallycap.util;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
-public class MyCirclePageIndicator extends CirclePageIndicator implements OnPageChangeListener{
+public class MyCirclePageIndicator extends CirclePageIndicator implements ObserverOfSubject{
 	
 	private int currentVisibility ;
     private Context context;
@@ -61,6 +60,16 @@ public class MyCirclePageIndicator extends CirclePageIndicator implements OnPage
 	public void setVisible(){
 		currentVisibility = View.VISIBLE;
 		this.setVisibility(currentVisibility);
+	}
+	@Override
+	public void update(Object o) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update(String s) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

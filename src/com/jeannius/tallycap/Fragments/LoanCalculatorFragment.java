@@ -15,7 +15,14 @@ public class LoanCalculatorFragment extends CalculatorFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		loanView = new LoanCalculatorView(getActivity());
+		loanView.m.seekBar.setOnSeekBarLongPressListener(this);
+		
 		return loanView;
 	}
+
+	
+	
 		
+	
+
 }

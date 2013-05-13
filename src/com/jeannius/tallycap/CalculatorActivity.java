@@ -3,14 +3,9 @@ package com.jeannius.tallycap;
 import java.util.Locale;
 
 import android.os.Bundle;
-import android.view.ActionMode;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.jeannius.tallycap.util.CalculatorViewPagerAdapter;
+import com.jeannius.tallycap.Fragments.CalculatorMainFragment;
 import com.jeannius.tallycap.util.MyAbstractActivity;
-import com.jeannius.tallycap.util.MyCirclePageIndicator;
-import com.jeannius.tallycap.util.myTabPageIndicator;
-import com.jeannius.tallycap.util.myViewPager;
 
 
 
@@ -29,41 +24,19 @@ public class CalculatorActivity extends MyAbstractActivity {
 	
 	
 	public Locale locale;
-	private CalculatorViewPagerAdapter mAdapter;
-	private myViewPager mPager;
-	private myTabPageIndicator mIndicator;
-	private MyCirclePageIndicator mIndicator2;
-	private ActionBar bar;
 	
 	
 	@Override
 	protected void onCreate(Bundle arg0) {		
 		super.onCreate(arg0);
 		
-		locale =getResources().getConfiguration().locale;
-		setContentView(R.layout.calculator_tab_layout);
-		mAdapter = new CalculatorViewPagerAdapter(getSupportFragmentManager(), getApplicationContext());
-		mPager = (myViewPager) findViewById(R.id.myViewPager1);
-		mPager.setAdapter(mAdapter);
+		setContentView(R.layout.plain);
+		CalculatorMainFragment c = new CalculatorMainFragment();
 		
-		bar = getSupportActionBar();
-		bar.setTitle(getResources().getString(R.string.calculator));
-		bar.setDisplayHomeAsUpEnabled(true);
+	
+		getSupportFragmentManager().beginTransaction().add(R.id.RED, c).commit();
 		
-		mIndicator = new myTabPageIndicator(getApplicationContext(), mPager);
-		mIndicator = (myTabPageIndicator) findViewById(R.id.myTabPageIndicator1);		
-		
-		
-		mIndicator2 = new MyCirclePageIndicator(getApplicationContext(), mPager, (myTabPageIndicator) mIndicator);
-		mIndicator2 = (MyCirclePageIndicator) findViewById(R.id.myCirclePageIndicator1);
-		mIndicator2.setViewPager(mPager);
-		mIndicator.setViewPager(mPager);
-		mIndicator.setIndicatorListener(mIndicator2);
-		
-		mPager.addAdditionalListeners(mIndicator2);
-		
-		
-		
+		locale =getResources().getConfiguration().locale;		
 	}
 
 	
