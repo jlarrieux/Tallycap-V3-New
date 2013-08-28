@@ -123,6 +123,20 @@ public class MortgageCalculatorView extends MyScrollViewWithDate implements  OnI
 		
 		
 	}
+
+
+	@Override
+	public void calculate() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	protected void whatif() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

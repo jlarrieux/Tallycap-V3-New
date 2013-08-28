@@ -52,7 +52,7 @@ public abstract class CalculatorAbstractModel  {
 			
 			double fine = Rounder(a);
 			
-			g.toaster(String.format("Top: %f   bottom: %f   u: %f", top, bottom, u), true);
+//			g.toaster(String.format("Top: %f   bottom: %f   u: %f", top, bottom, u), true);
 		
 			return  fine;
 

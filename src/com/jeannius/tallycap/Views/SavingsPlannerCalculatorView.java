@@ -58,53 +58,7 @@ public class SavingsPlannerCalculatorView extends MyScrollViewWithDate  {
 	
 	@Override
 	public void onClick(View v) {
-		
-//		String s="";
-//		int id = v.getId();
-//		if(id==R.id.SavingsPlannerCalculateButton){
-//			
-//			s+=goal.validate();
-//			s+=length.validate();
-//			if(interest.getText().toString().length()>0)s+=interest.validate();
-//			
-//
-//			if(s.length()>0) Toast.makeText(context, s, Toast.LENGTH_LONG).show();
-//			else{
-//				
-//				Double cur =0.0;
-//				Double g = Double.valueOf(goal.getText().toString());
-//				Double i = 0.0;
-//				boolean interestState = false;
-//				if(interest.getText().toString().length()>0){
-//					i=Double.valueOf(interest.getText().toString());
-//					interestState =true;
-//				}
-//				Integer l = Integer.valueOf(length.getText().toString());
-//				if(currentSavings.getText().toString().length()>0) {
-//					
-//					currentSavings.setMax(g-1);
-//					s+=currentSavings.validate();
-//					
-//				}
-//				
-//				if(s.length()>0)Toast.makeText(context, s, Toast.LENGTH_LONG).show();
-//				else{					
-//				
-//					if(currentSavings.getText().toString().length()>0)cur = Double.valueOf(currentSavings.getText().toString());
-//					
-//					String amF = Model.PayfrequencyCalculatorInternal(amountFrequency.getSelectedItemPosition());
-//					
-//					String leF = Model.lengthFrequencyCalculator(lengthFrequency.getSelectedItemPosition());
-//
-//					double j = Model.SavingsPlannerCalculateTheValue(g, i, l, amF, leF, cur, interestState);
-//					
-//					result.setText(String.format(getResources().getString(R.string.savings_planner_statement), nf.format(j), amF));
-//				}
-//			}
-//		}
-		
-		
-		
+				
 		double curr = currentSavings.getCurrentValue();
 		double g = goal.getCurrentValue();
 		double i = interestRate.getCurrentValue();
@@ -122,6 +76,22 @@ public class SavingsPlannerCalculatorView extends MyScrollViewWithDate  {
 		setResult(result, j);
 		
 		
+		
+	}
+
+
+
+	@Override
+	public void calculate() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	protected void whatif() {
+		// TODO Auto-generated method stub
 		
 	}
 	

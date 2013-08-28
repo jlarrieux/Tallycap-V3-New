@@ -6,11 +6,13 @@ import java.text.NumberFormat;
 import android.animation.LayoutTransition;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.PopupWindow;
 import android.widget.ScrollView;
@@ -87,6 +89,14 @@ public abstract class MyScrollViewWithDate extends ScrollView implements OnClick
 	@Override
 	public void onClick(View v) {
 		
+		Resources res =getResources();
+		Button b = (Button) v;
+		if(b.getText().toString().equals(res.getString(R.string.calculate)))calculate();
+			
+		
+		else if(b.getText().toString().equals(res.getString(R.string.what_if))) whatif();
+		
+//		g.toaster(b.getText().toString(), true);
 		
 	}
 	
@@ -170,6 +180,8 @@ public abstract class MyScrollViewWithDate extends ScrollView implements OnClick
 	
 	
 	
+	public abstract void calculate();
+	protected abstract void whatif();
 	
 	
 	

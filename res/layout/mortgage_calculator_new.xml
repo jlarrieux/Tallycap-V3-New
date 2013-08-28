@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/left_margin_standard"
-        android:layout_marginTop="@dimen/top_spacing" >
+        android:layout_marginTop="@dimen/top_spacing_super" >
 
     </com.jeannius.tallycap.util.MyUneditableDateEditText>
 
@@ -82,6 +82,7 @@
         android:id="@+id/mortgageCalculatorResultTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/top_spacing"
         android:layout_below="@id/mortgageCalculatorDownPaymentMySeekBarWidget"
         android:alpha="0"
         android:gravity="center"
@@ -90,6 +91,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/top_spacing"
         android:layout_below="@id/mortgageCalculatorResultTextView"
         android:gravity="center"
         android:measureWithLargestChild="true" >

@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
@@ -41,6 +42,7 @@ public class Global extends View {
 	public final static String MONTHLY="Monthly";
 	public final static String YEARLY="Yearly";
 	public float scaleFactorBig= 1.2f, scaleFactorSmall=.6f, scaleFactorHuge=1.3f, scaleFactorExtreme=1.7f;
+	public float logicalDensity=0;
 	
 	public Global(Context context) {
 		
@@ -63,6 +65,9 @@ public class Global extends View {
 		nf =  NumberFormat.getInstance(getResources().getConfiguration().locale);
 		nf.setParseIntegerOnly(false);
 		textRegularColor = context.getResources().getColor(R.color.text_regular_color);
+		DisplayMetrics metrics = new DisplayMetrics();
+		((WindowManager)context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
+		logicalDensity = metrics.density;
 	}
 	
 	

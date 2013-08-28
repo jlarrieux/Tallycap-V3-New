@@ -123,6 +123,20 @@ public class K401kCalculatorView extends MyScrollViewWithDate implements OnItemS
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	@Override
+	public void calculate() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	protected void whatif() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

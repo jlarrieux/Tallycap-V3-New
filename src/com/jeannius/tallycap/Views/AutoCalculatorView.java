@@ -57,17 +57,25 @@ public class AutoCalculatorView extends MyScrollViewWithDate {
 		
 	}
 
-	@Override
-	public void onClick(View v) {
-
 	
+
+
+	@Override
+	public void calculate() {
 		Double i = Double.valueOf(interest.getCurrentValue());
 		Double p = Double.valueOf(amount.getCurrentValue()-tradeInValue.getCurrentValue() -downPayment.getCurrentValue());
 		int l = Model.numberFromStringParser(length.getSelecObject().toString());
 		
 		double j = Model.AutoCalculateTheValue(i, p, l, unDate.getCalendar());
 		setResult(result, j);
+//		g.toaster("RED", true);
 		
+	}
+
+
+	@Override
+	protected void whatif() {
+		// TODO Auto-generated method stub
 		
 	}
 

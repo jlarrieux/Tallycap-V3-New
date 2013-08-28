@@ -50,9 +50,11 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     public TextView getGenericView() {
+    	
+    	int minHeight = (int) ((48*g.logicalDensity)+0.5);
         // Layout parameters for the ExpandableListView
         AbsListView.LayoutParams lp = new AbsListView.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, 55);
+                ViewGroup.LayoutParams.MATCH_PARENT, minHeight);
         
 
         TextView text = new TextView(context);
@@ -61,9 +63,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         text.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
         
         text.setTextSize(14);
-        text.setMinHeight(48);
-        // Set the text starting position
-        
+       
      
         
         return text;
@@ -76,7 +76,11 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     	int paddind_in_px = (int) (padding_in_dp*scale +0.5f);
     	text.setPadding(paddind_in_px, 0, 5, 0);
     	
-           if(groupPosition==0) text.setText(getChild(groupPosition, childPosition).toString());
+//    	convertView.setMinimumHeight(100);
+    	text.setHeight(150);
+    		
+    	
+        if(groupPosition==0) text.setText(getChild(groupPosition, childPosition).toString());
         
     	
         return text;

@@ -83,6 +83,22 @@ public class LoanCalculatorView extends MyScrollViewWithDate  {
 
 
 
+	@Override
+	public void calculate() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	protected void whatif() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
 	
 	
 	

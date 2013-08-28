@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/left_margin_standard"
-        android:layout_marginTop="@dimen/top_spacing"
+        android:layout_marginTop="@dimen/top_spacing_super"
         android:tag="@string/annual_salary"
         app:max="@integer/a_billion"
         app:type="money" >

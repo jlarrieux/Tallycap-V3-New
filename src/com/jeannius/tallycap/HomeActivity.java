@@ -49,7 +49,7 @@ public class HomeActivity extends MyAbstractActivity implements OnGroupCollapseL
 		
 		FrameLayout frame = (FrameLayout) findViewById(R.id.content_frame);
 		ImageView img = new ImageView(getApplicationContext());
-//		img.setBackgroundResource(R.drawable.construction);
+
 		LayoutParams lay = new LayoutParams(new LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.MATCH_PARENT));
 		
 		frame.addView(img, lay);
@@ -83,9 +83,7 @@ public class HomeActivity extends MyAbstractActivity implements OnGroupCollapseL
  
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.ic_drawer, R.string.one,
-                R.string.two) {
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.one,R.string.two) {
  
             public void onDrawerClosed(View view) {
                 // TODO Auto-generated method stub
@@ -135,8 +133,6 @@ public class HomeActivity extends MyAbstractActivity implements OnGroupCollapseL
 		ft.replace(R.id.content_frame, t);
 		ft.commit();
 		
-//		mDrawerList.setIt
-//		g.toaster(String.format("Child position: %d", childPosition), true);
 		return false;
 	}
 
@@ -152,7 +148,6 @@ public class HomeActivity extends MyAbstractActivity implements OnGroupCollapseL
 			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 			ft.add(t, "RED");
 			ft.commit();	
-//			g.toaster(String.format("Group Position: %d", groupPosition), false);
 			
 		}
 			
