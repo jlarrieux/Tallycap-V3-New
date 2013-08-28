@@ -12,8 +12,8 @@ import org.achartengine.model.XYSeries;
 import android.content.Context;
 import android.util.Log;
 
-import com.jeannius.tallycap.CalculatorActivity;
 import com.jeannius.tallycap.R;
+import com.jeannius.tallycap.util.Global;
 
 
 public abstract class CalculatorAbstractModel  {
@@ -25,15 +25,21 @@ public abstract class CalculatorAbstractModel  {
 		0xFF52d4ca, 0xFFc5e05d, 0xFFe7c174, 0xFFfff797, 0xFFc5f68f, 0xFFbdf1e6, 0xFF9e987d,
 		0xFFeb988d, 0xFF91c9e5, 0xFF93dc4a, 0xFFffb900, 0xFF9ebbcd, 0xFF009797, 0xFF0db2c2};
 	
-
+//TODO
+	//1-REPLACE ALL "equals" with "contains"
+	//2-add global logcat for debug.
+	
+	
+	
+	
 	
 	//this function calculates the payment
-		protected double CalculateLoanPayment(double interest, double amount, int length, String Payfrequency, Calendar StartDate, String LengthFrequency){
+		protected double CalculateLoanPayment(double interest, double amount, int length, String Payfrequency, Calendar StartDate, String LengthFrequency, Global g){
 							
 			interest = interestCalculator(interest, Payfrequency);			
-			int newN =  lengthCalculator(length, Payfrequency, StartDate, LengthFrequency);	
+			int newN =  lengthCalculator(length, Payfrequency, StartDate, LengthFrequency, g);	
 			
-			Log.v("LOANAGE", String.format("Interest: %f, length: %d", interest, newN));
+//			Log.v("LOANAGE", String.format("Interest: %f, length: %d", interest, newN));
 
 			double u = Math.pow(1+interest, newN);
 
@@ -45,10 +51,17 @@ public abstract class CalculatorAbstractModel  {
 
 			
 			double fine = Rounder(a);
+			
+			g.toaster(String.format("Top: %f   bottom: %f   u: %f", top, bottom, u), true);
 		
 			return  fine;
 
 		}
+		
+		
+		
+		
+		//
 		
 		
 		public Integer numberFromStringParser(String s){
@@ -236,6 +249,7 @@ public abstract class CalculatorAbstractModel  {
 			if(currentBalance> creditLimit) payment += overTheLimitFee;
 			if(payment<minpay) payment =minpay;
 			payment = Rounder(payment);
+			if(payment>currentBalance) payment =currentBalance;
 			
 			return payment;
 		}
@@ -329,10 +343,10 @@ public abstract class CalculatorAbstractModel  {
 		protected double interestCalculator(double APR, String payFrequency ){
 			
 			
-			if(payFrequency.equals(CalculatorActivity.WEEKLY)) APR= APR/5200;
-			else if(payFrequency.equals(CalculatorActivity.BIWEEKLY)) APR= APR/2600;
-			else if(payFrequency.equals(CalculatorActivity.MONTHLY)) APR= APR/1200;
-			else if(payFrequency.equals(CalculatorActivity.YEARLY)) APR= APR/100;
+			if(payFrequency.equals(Global.WEEKLY)) APR= APR/5200;
+			else if(payFrequency.equals(Global.BIWEEKLY)) APR= APR/2600;
+			else if(payFrequency.equals(Global.MONTHLY)) APR= APR/1200;
+			else if(payFrequency.equals(Global.YEARLY)) APR= APR/100;
 							
 			return APR;
 		}
@@ -348,20 +362,21 @@ public abstract class CalculatorAbstractModel  {
 		 * this function takes in parameters above in return the time represented in # of weeks
 		 */
 		
-		protected int lengthCalculator(int length, String payFrequency, Calendar StartDate, String lengthFrequency){
+		protected int lengthCalculator(int length, String payFrequency, Calendar StartDate, String lengthFrequency, Global g){
 			int nl =0;
 			int field =0;
 			int fieldForFinal =0;
 			int add =1;
-			
+			g.logCat( String.format("Length: %d\nPayFrequenct: %s\nStartDate: %s\n LengthFrequency: %s", 
+													length,	payFrequency,StartDate.toString(), lengthFrequency));
 			Calendar finalDate = (Calendar) StartDate.clone();
 			Calendar clonerDate = (Calendar) StartDate.clone();
 			
 			int before = finalDate.get(Calendar.DAY_OF_WEEK);
 			
-			if(lengthFrequency.equals(CalculatorActivity.YEARLY)) fieldForFinal=Calendar.YEAR;
-			else if(lengthFrequency.equals(CalculatorActivity.MONTHLY)) fieldForFinal=Calendar.MONTH;
-			else if(lengthFrequency.equals(CalculatorActivity.WEEKLY)) fieldForFinal=Calendar.WEEK_OF_MONTH;
+			if(lengthFrequency.contains(Global.YEARLY)) fieldForFinal=Calendar.YEAR;
+			else if(lengthFrequency.contains(Global.MONTHLY)) fieldForFinal=Calendar.MONTH;
+			else if(lengthFrequency.contains(Global.WEEKLY)) fieldForFinal=Calendar.WEEK_OF_MONTH;
 			
 			finalDate.add(fieldForFinal, length);
 			
@@ -369,26 +384,26 @@ public abstract class CalculatorAbstractModel  {
 			
 			if(fieldForFinal==Calendar.WEEK_OF_MONTH)finalDate.add(Calendar.DAY_OF_YEAR, (before-after));
 			
-			Log.v("CALC", String.format("bef: %d, aft: %d", before, after));
+			g.logCat( String.format("bef: %d, aft: %d", before, after));
 			
-			if(payFrequency.equals(CalculatorActivity.WEEKLY)) field = Calendar.WEEK_OF_MONTH;
-			else if(payFrequency.equals(CalculatorActivity.BIWEEKLY)){
+			if(payFrequency.equals(Global.WEEKLY)) field = Calendar.WEEK_OF_MONTH;
+			else if(payFrequency.equals(Global.BIWEEKLY)){
 				field = Calendar.WEEK_OF_MONTH;
 				add = 2;
 			}
-			else if(payFrequency.equals(CalculatorActivity.MONTHLY)) field = Calendar.MONTH;
-			else if(payFrequency.equals(CalculatorActivity.YEARLY)) field = Calendar.YEAR;
+			else if(payFrequency.equals(Global.MONTHLY)) field = Calendar.MONTH;
+			else if(payFrequency.equals(Global.YEARLY)) field = Calendar.YEAR;
 
 			
 			
-			Log.v("PRE CALD", "Date target:" + finalDate.getTime().toString());
+			Log.i("PRE CALD", "Date target:" + finalDate.getTime().toString());
 			while(clonerDate.before(finalDate)){
 				clonerDate.add(field, add);
 				nl++;
-				Log.v("CALC", String.format("Date before: %s, lenght: %d", clonerDate.getTime().toString(), nl));
+				g.logCat( String.format("Date before: %s, lenght: %d", clonerDate.getTime().toString(), nl));
 			}
 			
-			Log.v("Calc Final", String.format("Target date: %s, Final date: %s", finalDate.getTime().toString(), clonerDate.getTime().toString()));
+			g.logCat( String.format("Target date: %s, Final date: %s", finalDate.getTime().toString(), clonerDate.getTime().toString()));
 			
 			return nl;
 		}
@@ -409,7 +424,7 @@ public abstract class CalculatorAbstractModel  {
 		
 		
 		
-	
+		
 		
 		
 		

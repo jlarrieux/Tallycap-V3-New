@@ -15,6 +15,12 @@ public class SavingsPlannerCalculatorFragment extends CalculatorFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		savingsPlannerView = new SavingsPlannerCalculatorView(getActivity());
+		
+		savingsPlannerView.goal.seekBar.setOnSeekBarLongPressListener(this);
+		savingsPlannerView.length.seekBar.setOnSeekBarLongPressListener(this);
+		savingsPlannerView.interestRate.seekBar.setOnSeekBarLongPressListener(this);
+		savingsPlannerView.currentSavings.seekBar.setOnSeekBarLongPressListener(this);
+		
 		return savingsPlannerView;
 	}
 	

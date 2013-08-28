@@ -11,7 +11,7 @@
     <string name="calculator">Calculators</string>
     <string name="budgetpad">Budget Pad</string>
     <string name="account">Account</string>
-    <string name="start_date">Start Date</string>
+    <string name="start_date">Start Date:</string>
     <string name="amount">Amount</string>
     <string name="interest_rate">Interest Rate</string>
     <string name="enter_amount">Enter $</string>
@@ -115,5 +115,34 @@
                         <string name="zero">0</string>
                         <string name="decimal_point">.</string>
                         <string name="clear">Clear</string>
+                        <string-array name="temp_interpolator_arrays">
+                            <item >AccelerateDecelerate</item>
+                            <item >Accelerate</item>
+                            <item >Anticipate</item>
+                            <item >AnticipateOvershoot</item>
+                            <item >Bounce</item>
+                            <item >Cycle</item>
+                            <item >Decelerate</item>
+                            <item >Linear</item>
+                            <item >Overshoot</item>
+                           
+                            
+                        </string-array>
+                        <string-array name="fragment_list">
+                            <item >Calculator</item>
+                            <item >Reminder</item>
+                            <item >Budget Pad</item>
+                            <item >Account</item>
+                        </string-array>
+                        <string-array name="calculator_subgroup">
+                            <item >Mortgage</item>
+                            <item >Auto</item>
+                            <item >Credit Card</item>
+                            <item >401K</item>
+                        </string-array>
+                            <string name="navigation_drawer_icon">Icon for navigation drawer item</string>
+                            <string name="nothing">nothing</string>
+                            <string name="length_1">Length:</string>
+                            <string name="frequency_of_saving1">Saving Frequency:</string>
 
 </resources>

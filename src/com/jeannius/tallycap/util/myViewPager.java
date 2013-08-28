@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 
 
 /**
@@ -25,15 +26,12 @@ public class myViewPager extends ViewPager implements SubjectToObservers{
 		super(context, attrs);
 		if (isInEditMode()) return;
 		additional =new ArrayList<ViewPager.OnPageChangeListener>();
+		setClipChildren(false);
+		setClipToPadding(false);
 		
 	}
 	
-	//this next function create an array of listener and/or add an additional listener to the array
-//	public void addAdditionalListeners(OnPageChangeListener listener){
-//		if(additional !=null) additional = new ArrayList<ViewPager.OnPageChangeListener>();
-//		additional.add(listener);
-//	}
-	
+
 	
 	
 	//this function iterates though the array and make sure the additional listeners get the event
@@ -92,6 +90,17 @@ public class myViewPager extends ViewPager implements SubjectToObservers{
 	}
 	
 	
+	@Override
+	public boolean onTouchEvent(MotionEvent arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
+	
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

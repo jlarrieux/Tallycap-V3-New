@@ -14,13 +14,14 @@ public class AutoCalculatorFragment extends CalculatorFragment {
 			
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-			autoView = new AutoCalculatorView(getActivity());	
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,	Bundle savedInstanceState) {
+			autoView = new AutoCalculatorView(getActivity());				
+			autoView.unDate.setFragmentManager(getChildFragmentManager());
+			autoView.amount.seekBar.setOnSeekBarLongPressListener(this);
+			autoView.interest.seekBar.setOnSeekBarLongPressListener(this);
+			autoView.tradeInValue.seekBar.setOnSeekBarLongPressListener(this);
+			autoView.downPayment.seekBar.setOnSeekBarLongPressListener(this);
 			
-			if(savedInstanceState!=null) 
-				if(savedInstanceState.containsKey(CalculatorFragment.RESULTTEXT))
-					autoView.result.setText(savedInstanceState.getString(CalculatorFragment.RESULTTEXT));
 		return autoView;
 	}
 	
@@ -34,5 +35,6 @@ public class AutoCalculatorFragment extends CalculatorFragment {
 			
 		
 	}
-	
+
+
 }

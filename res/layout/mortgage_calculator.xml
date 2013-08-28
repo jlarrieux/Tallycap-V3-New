@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
-
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    tools:context=".Views.MortgageCalculatorView" >
+
     <RelativeLayout
         android:id="@+id/RelativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="414dp" >
-
+
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/seekbarNumberInputPopUpRangeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="false"
@@ -16,25 +19,25 @@
             android:layout_marginLeft="60dp"
             android:layout_marginTop="30dp"
             android:text="@string/start_date" />
-
+
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/MySeekBarWidgetAmountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/textView1"
-            android:layout_below="@+id/textView1"
+            android:layout_alignRight="@+id/seekbarNumberInputPopUpRangeTextView"
+            android:layout_below="@+id/seekbarNumberInputPopUpRangeTextView"
             android:layout_marginTop="30dp"
             android:text="@string/amount" />
-
+
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/textView2"
-            android:layout_below="@+id/textView2"
+            android:layout_alignRight="@+id/MySeekBarWidgetAmountTextView"
+            android:layout_below="@+id/MySeekBarWidgetAmountTextView"
             android:layout_marginTop="30dp"
             android:text="@string/interest_rate" />
-
+
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
@@ -42,7 +45,9 @@
             android:layout_alignRight="@+id/textView3"
             android:layout_below="@+id/textView3"
             android:layout_marginTop="30dp"
-            android:text="@string/length" /><TextView
+            android:text="@string/length" />
+
+        <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,31 +55,31 @@
             android:layout_below="@id/textView4"
             android:layout_marginTop="30dp"
             android:text="@string/yearly_taxes" />
-
+
         <com.jeannius.tallycap.util.MyUneditableDateEditText
             android:id="@+id/MortgageDateEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView1"
-            android:layout_alignBottom="@+id/textView1"
+            android:layout_alignBaseline="@+id/seekbarNumberInputPopUpRangeTextView"
+            android:layout_alignBottom="@+id/seekbarNumberInputPopUpRangeTextView"
             android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@+id/textView1"
+            android:layout_toRightOf="@+id/seekbarNumberInputPopUpRangeTextView"
             android:ems="10" >
 
             <requestFocus />
         </com.jeannius.tallycap.util.MyUneditableDateEditText>
-
+
         <com.jeannius.tallycap.util.MyEditText
             android:id="@+id/MortgageAmountEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView2"
-            android:layout_alignBottom="@+id/textView2"
+            android:layout_alignBaseline="@+id/MySeekBarWidgetAmountTextView"
+            android:layout_alignBottom="@+id/MySeekBarWidgetAmountTextView"
             android:layout_alignLeft="@+id/MortgageDateEditText"
             android:layout_alignParentRight="false"
             android:ems="10"
             android:hint="@string/enter_amount" />
-
+
         <com.jeannius.tallycap.util.MyEditText
             android:id="@+id/MortgageInterestMyEditText"
             android:layout_width="wrap_content"
@@ -84,7 +89,7 @@
             android:layout_alignLeft="@+id/MortgageAmountEditText"
             android:ems="10"
             android:hint="@string/enter_interest" />
-
+
         <Spinner
             android:id="@+id/MortgageLengthSpinner"
             android:layout_width="wrap_content"
@@ -92,7 +97,9 @@
             android:layout_alignBaseline="@+id/textView4"
             android:layout_alignBottom="@+id/textView4"
             android:layout_alignLeft="@+id/MortgageInterestMyEditText"
-            android:entries="@array/mortgage_loan_length" /><TextView
+            android:entries="@array/mortgage_loan_length" />
+
+        <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -100,7 +107,7 @@
             android:layout_below="@id/textView5"
             android:layout_marginTop="30dp"
             android:text="@string/down_payment" />
-
+
         <TextView
             android:id="@+id/MortgageResultTextView"
             android:layout_width="fill_parent"
@@ -110,7 +117,7 @@
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -118,22 +125,25 @@
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:measureWithLargestChild="true" >
-
+
             <Button
                 android:id="@+id/MortgageCalculateButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:minWidth="120dip"
-                android:text="@string/calculate" /><Button
+                android:text="@string/calculate" />
+
+            <Button
                 android:id="@+id/MortgageWhatIfButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:minWidth="120dip"
                 android:text="@string/what_if" />
+        </LinearLayout>
 
-        </LinearLayout><com.jeannius.tallycap.util.MyEditText
+        <com.jeannius.tallycap.util.MyEditText
             android:id="@+id/MortgageYearlyTaxesMyEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -143,7 +153,7 @@
             android:ems="10"
             android:hint="@string/enter_interest"
             android:width="100dp" />
-
+
         <com.jeannius.tallycap.util.MyEditText
             android:id="@+id/MortgageDownPaymentMyEditText"
             android:layout_width="wrap_content"
@@ -153,7 +163,7 @@
             android:ems="10"
             android:hint="@string/enter_interest"
             android:width="100dp" />
-
+
         <Spinner
             android:id="@+id/MortgageDownPaymentSelectorSpinner"
             android:layout_width="wrap_content"
@@ -162,7 +172,7 @@
             android:layout_marginLeft="15dp"
             android:layout_toRightOf="@id/MortgageDownPaymentMyEditText"
             android:entries="@array/fixed_vs_percent" />
-
+
         <Spinner
             android:id="@+id/MortgageYearlyTaxesSelectionSpinner"
             android:layout_width="wrap_content"
@@ -172,7 +182,6 @@
             android:layout_marginLeft="15dp"
             android:layout_toRightOf="@id/MortgageYearlyTaxesMyEditText"
             android:entries="@array/fixed_vs_percent" />
-
     </RelativeLayout>
 
 </ScrollView>

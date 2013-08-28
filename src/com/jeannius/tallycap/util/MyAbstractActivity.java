@@ -1,13 +1,10 @@
 package com.jeannius.tallycap.util;
 
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.jeannius.tallycap.CalculatorActivity;
-import com.jeannius.tallycap.HomeActivity;
-import com.jeannius.tallycap.R;
 
 public abstract class MyAbstractActivity extends SherlockFragmentActivity {
 	public static final String CALCULATOR="Calculator";
@@ -15,13 +12,10 @@ public abstract class MyAbstractActivity extends SherlockFragmentActivity {
 	public static final String REMINDER="Reminder";
 	public static final String BUDGET_PAD="Budget Pad";
 	Intent intent;
+//	private final static boolean debug = true;
+	public Global g;
 	
-	 @Override
-	    public boolean onCreateOptionsMenu(Menu menu) { 
-	    	com.actionbarsherlock.view.MenuInflater inflater = getSupportMenuInflater();
-	    	inflater.inflate(R.menu.main_overflow, menu);    	
-	    	return true;	    	
-	    }
+
 	 
 	 public void switchTo(String Class_To){
 		 intent = new Intent();
@@ -35,19 +29,40 @@ public abstract class MyAbstractActivity extends SherlockFragmentActivity {
 	 }
 	 
 	 
+
+	 
+	 
 	 @Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch(item.getItemId()){
-			case android.R.id.home:
-				intent = new Intent(this, HomeActivity.class);
-				intent.addFlags(
-						Intent.FLAG_ACTIVITY_CLEAR_TOP|
-						Intent.FLAG_ACTIVITY_NEW_TASK);
-				startActivity(intent);
-				finish();
-				return true;
-		}
-		return super.onOptionsItemSelected(item);
+	protected void onCreate(Bundle arg0) {
+		// TODO Auto-generated method stub
+		super.onCreate(arg0);
+		g = new Global(getApplicationContext());
+		ViewServer.get(this).addWindow(this);
 	}
+	 
+	 
+	 @Override
+	protected void onDestroy() {
+		
+		super.onDestroy();
+		ViewServer.get(this).removeWindow(this);
+	}
+	 
+	 
+	 @Override
+	protected void onResume() {
+		
+		super.onResume();
+		ViewServer.get(this).setFocusedWindow(this);
+	}
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 
 }

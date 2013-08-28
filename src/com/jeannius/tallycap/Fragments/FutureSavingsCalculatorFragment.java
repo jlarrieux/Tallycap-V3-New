@@ -12,11 +12,16 @@ public class FutureSavingsCalculatorFragment extends CalculatorFragment {
 	FutureSavingsCalculatorView futureSavingsView;
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-			futureSavingsView = new FutureSavingsCalculatorView(getActivity());
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,	Bundle savedInstanceState) {
 		
+		futureSavingsView = new FutureSavingsCalculatorView(getActivity());
+		futureSavingsView.amount.seekBar.setOnSeekBarLongPressListener(this);
+		futureSavingsView.interest.seekBar.setOnSeekBarLongPressListener(this);
+		futureSavingsView.length.seekBar.setOnSeekBarLongPressListener(this);
+		futureSavingsView.currentSavings.seekBar.setOnSeekBarLongPressListener(this);
 		
 		return futureSavingsView;
 	}
+
+	
 }

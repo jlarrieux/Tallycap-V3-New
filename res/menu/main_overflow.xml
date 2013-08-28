@@ -4,6 +4,7 @@
         <item android:id="@+id/FeedbackMenu" android:title="@string/feedback"></item>
         <item android:id="@+id/AboutMenu" android:title="@string/about"></item>
         <item android:id="@+id/HelpMenu" android:title="@string/help"></item>
+        <item android:id="@+id/TempShow" android:title="Show Hidden"></item>
     </group>
     
 

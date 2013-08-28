@@ -15,6 +15,18 @@ public class K401kCalculatorFragment extends CalculatorFragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		k401kView = new K401kCalculatorView(getActivity());
+		
+		k401kView.annualSalary.seekBar.setOnSeekBarLongPressListener(this);
+		k401kView.contribution.seekBar.setOnSeekBarLongPressListener(this);
+		k401kView.yearToRetirement.seekBar.setOnSeekBarLongPressListener(this);
+		k401kView.rateOfReturn.seekBar.setOnSeekBarLongPressListener(this);
+		k401kView.annualIncrease.seekBar.setOnSeekBarLongPressListener(this);
+		k401kView.currentSavings.seekBar.setOnSeekBarLongPressListener(this);
+		k401kView.employerMatch.seekBar.setOnSeekBarLongPressListener(this);
+		k401kView.employerLimit.seekBar.setOnSeekBarLongPressListener(this);
+		
+		
+		
 		return k401kView;
 	}
 

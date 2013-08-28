@@ -3,6 +3,57 @@
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_medium">8dp</dimen>
     <dimen name="padding_large">16dp</dimen>
-    <dimen name="calculator_number_pop_up_text_size">40sp</dimen>
+    <dimen name="calculator_number_pop_up_text_size">20sp</dimen>
+    <dimen name="top_spacing">8dp</dimen>
+    <dimen name="text_header_size">16sp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+    <color name="text_header_color">#FFF6DF</color>
+    <color name="text_regular_color">#000000</color>
+       <integer-array name="android_color_palette_blue">
+        <item >0xFFE2F4FB</item>
+        <item >0xFFC5EAF8</item>
+        <item >0xFFA8DFF4</item>
+        <item >0xFF8ad5f0</item>
+        <item >0xFF6DCAEC</item>
+        <item >0xFF50C0E9</item>
+        <item >0xFF33B5E5</item>
+        <item >0xFF2CB1E1</item>
+        <item >0xFF24ADDE</item>
+        <item >0xFF1DA9DA</item>
+        <item >0xFF16A5D7</item>
+        <item >0xFF0FA1D3</item>
+        <item >0xFF079DD0</item>
+        <item >0xFF0099CC</item>
+    </integer-array>
+ 
+    <integer-array name="android_color_palette_purple"></integer-array>
+    <integer-array name="android_color_palette_green"></integer-array>
+    <integer-array name="android_color_palette_orange">
+        <item >0xFFFFF6DF</item>
+        <item >0xFFFFECC0</item>
+        <item >0xFFFFE3A0</item>
+        <item >0xFFFFD980</item>
+        <item >0xFFFFD060</item>
+        <item >0xFFFFC641</item>
+        <item >0xFFFFBD21</item>
+        <item >0xFFFFB61C</item>
+        <item >0xFFFFAE18</item>
+        <item >0xFFFFA713</item>
+        <item >0xFFFFA00E</item>
+        <item >0xFFFF9909</item>
+        <item >0xFFFF9105</item>
+        <item >0xFFFF8A00</item>        
+    </integer-array>
+    <integer-array name="android_color_palette_red"></integer-array>
+    <color name="tallycap_dark_blue">#2E62A6</color>
+    <color name="tallycap_light_blue">#348abf</color>
+    <color name="tallycap_green">#5ba675</color>
+    <color name="tallycap_gold">#d9b959</color>
+    <color name="tallycap_white">#f2f2f2</color>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_micro">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="left_margin_standard">20dp</dimen>
+    <dimen name="side_margin">16dp</dimen>
 
 </resources>

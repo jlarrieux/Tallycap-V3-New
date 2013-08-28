@@ -1,143 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <RelativeLayout
-        android:id="@+id/RelativeLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/amount" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@id/textView1"
-            android:layout_below="@id/textView1"
-            android:layout_marginTop="30dp"
-            android:text="@string/interest_rate" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@id/textView2"
-            android:layout_below="@id/textView2"
-            android:layout_marginTop="30dp"
-            android:text="@string/length" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@id/textView3"
-            android:layout_below="@id/textView3"
-            android:layout_marginTop="30dp"
-            android:text="@string/current_savings" />
-
-        <TextView
-            android:id="@+id/FutureSavingsResultTextView"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textView4"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/FutureSavingsResultTextView"
-            android:layout_marginBottom="30dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center" >
-
-            <Button
-                android:id="@+id/FutureSavingsCalculateButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:minWidth="120dip"
-                android:text="@string/calculate" /><Button
-                android:id="@+id/FutureSavingsWhatIfButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:enabled="false"
-                android:minWidth="120dip"
-                android:text="@string/what_if" />
-
-        </LinearLayout>
-
-        <com.jeannius.tallycap.util.MyEditText
-            android:id="@+id/FutureSavingsAmountEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView1"
-            android:layout_alignBottom="@+id/textView1"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@+id/textView1"
-            android:ems="10"
-            android:width="100dp" >
-
-            <requestFocus />
-        </com.jeannius.tallycap.util.MyEditText>
-
-        <com.jeannius.tallycap.util.MyEditText
-            android:id="@+id/FutureSavingsInterestMyEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView2"
-            android:layout_alignBottom="@+id/textView2"
-            android:layout_alignLeft="@+id/FutureSavingsAmountEditText"
-            android:ems="10" />
-
-        <com.jeannius.tallycap.util.MyEditText
-            android:id="@+id/FutureSavingsLengthMyEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView3"
-            android:layout_alignBottom="@+id/textView3"
-            android:layout_alignLeft="@+id/FutureSavingsInterestMyEditText"
-            android:ems="10"
-            android:width="100dp" />
-
-        <Spinner
-            android:id="@+id/FutureSavingsAmountSpinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/textView1"
-            android:layout_alignTop="@id/textView1"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@id/FutureSavingsAmountEditText"
-            android:entries="@array/frequency_array" />
-
-        <Spinner
-            android:id="@+id/FutureSavingsLengthSpinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/textView3"
-            android:layout_alignTop="@id/textView3"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@+id/FutureSavingsLengthMyEditText"
-            android:entries="@array/length_array" />
-
-        <com.jeannius.tallycap.util.MyEditText
-            android:id="@+id/FutureSavingsCurrentSavingsMyEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView4"
-            android:layout_alignBottom="@+id/textView4"
-            android:layout_alignLeft="@+id/FutureSavingsLengthMyEditText"
-            android:ems="10" />
-
-    </RelativeLayout>
-
-</ScrollView>

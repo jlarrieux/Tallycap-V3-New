@@ -11,9 +11,20 @@
       <attr name="type">
           <enum name="money" value="1"/>
           <enum name="percent" value="2"/>
+          <enum name="time" value="3"/>
+          <enum name="money_frequency" value="4"/>
+          <enum name="money_percent_or_fixed" value="5"/>
+          <enum name="money_month" value="6"/>
+          <enum name="time_year_only" value="7"/>
       </attr>
       <attr name="android:gravity"/>
       <attr name="min" format="integer"/>
+      <attr name="preferred_spinner_selection" format="integer"/>
+  </declare-styleable>
+  
+  <declare-styleable name="MySpinnerContainer">
+      <attr name="res_id" format="reference"/>    
+      <attr name="preferred_selection" format="integer"/>
   </declare-styleable>
     
 </resources>

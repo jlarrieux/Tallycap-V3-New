@@ -25,26 +25,30 @@
             android:id="@+id/HomeReminderButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/reminder" />
+            android:text="@string/reminder"
+            android:textColor="@color/text_regular_color" />
 
         <Button
             android:id="@+id/HomeCalculatorButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/calculator" />
+            android:text="@string/calculator"
+            android:textColor="@color/text_regular_color" />
 
         <Button
             android:id="@+id/HomeBudgetPadButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:width="150dp"
-            android:text="@string/budgetpad" />
+            android:text="@string/budgetpad"
+            android:textColor="@color/text_regular_color"
+            android:width="150dp" />
 
         <Button
             android:id="@+id/HomeAccountButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/account" />
+            android:text="@string/account"
+            android:textColor="@color/text_regular_color" />
 
     </LinearLayout>
 

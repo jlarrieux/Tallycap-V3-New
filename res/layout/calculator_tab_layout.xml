@@ -3,13 +3,16 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <com.jeannius.tallycap.util.myTabPageIndicator
         android:id="@+id/myTabPageIndicator1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
 
           </com.jeannius.tallycap.util.myTabPageIndicator>
-
+
+
+
     <com.jeannius.tallycap.util.myViewPager
         android:id="@+id/myViewPager1"
         android:layout_width="fill_parent"
@@ -17,6 +20,7 @@
         android:layout_weight="1" >
 
     </com.jeannius.tallycap.util.myViewPager>
+
 
     <com.jeannius.tallycap.util.MyCirclePageIndicator
         android:id="@+id/myCirclePageIndicator1"

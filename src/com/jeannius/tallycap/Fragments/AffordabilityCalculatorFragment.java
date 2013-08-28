@@ -15,11 +15,18 @@ public class AffordabilityCalculatorFragment extends CalculatorFragment {
 	
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,	Bundle savedInstanceState) {
 		
 		affordView = new AffordabilityCalculatorView(getActivity());
+		affordView.amount.seekBar.setOnSeekBarLongPressListener(this);
+		affordView.interest.seekBar.setOnSeekBarLongPressListener(this);
+		affordView.length.seekBar.setOnSeekBarLongPressListener(this);
 		
 		return affordView;
 	}
+
+
+
+
+
 }

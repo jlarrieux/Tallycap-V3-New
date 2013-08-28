@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Android/extras/google/analytics_sdk/libGoogleAnalytics.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Android/android-sdk/API/achartengine-1.1.0-rc1.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/E:/workspace/AChartEngive V1/achartengine-1.0.0-javadocs.zip!/"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Android/extras/android/support/v4/android-support-v4.jar"/>
+	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

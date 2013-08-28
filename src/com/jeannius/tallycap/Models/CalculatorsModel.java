@@ -5,21 +5,28 @@ import java.util.Calendar;
 import android.content.Context;
 import android.util.Log;
 
-import com.jeannius.tallycap.CalculatorActivity;
+import com.jeannius.tallycap.util.Global;
 
 public class CalculatorsModel extends CalculatorAbstractModel {
+	
+	
+	//TODO
+		//1-REPLACE ALL "equals" with "contains"
+		//2-add global logcat for debug.
+	Global g;
 	
 	private Context context;
 	public CalculatorsModel(Context context){
 		this.context = context;
+		g= new Global(context);
 	}
 	//this is the function for the Auto Calculator
 	public double AutoCalculateTheValue(double interest, double amount,int length,  Calendar StartDate) {
 
-		String LengthFrequency = CalculatorActivity.MONTHLY;
-		String Payfrequency = CalculatorActivity.MONTHLY;
+		String LengthFrequency = Global.MONTHLY;
+		String Payfrequency = Global.MONTHLY;
 		
-		double r =this.CalculateLoanPayment(interest, amount, length, Payfrequency, StartDate, LengthFrequency);
+		double r =this.CalculateLoanPayment(interest, amount, length, Payfrequency, StartDate, LengthFrequency, g);
 		return r;
 	}
 	
@@ -36,16 +43,16 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 	 */
 	public double MortgageCalculateTheValue(double interest, double amount,int length,  Calendar StartDate, double YearlyTaxes) {
 
-		String LengthFrequency = CalculatorActivity.YEARLY;
-		String Payfrequency = CalculatorActivity.MONTHLY;
+		String LengthFrequency = Global.YEARLY;
+		String Payfrequency = Global.MONTHLY;
 		
-		Log.v("MORTGAGE", String.format("Yearly taxes: %f", YearlyTaxes));
+//		Log.v("MORTGAGE", String.format("Yearly taxes: %f", YearlyTaxes));
 		
-		double r =this.CalculateLoanPayment(interest, amount, length, Payfrequency, StartDate, LengthFrequency);
-		Log.v("MORTGAGE", String.format("Payment initial: %f", r));
+		double r =this.CalculateLoanPayment(interest, amount, length, Payfrequency, StartDate, LengthFrequency, g);
+//		Log.v("MORTGAGE", String.format("Payment initial: %f", r));
 		
 		if(YearlyTaxes!=0) r += (YearlyTaxes/12);
-		Log.v("MORTGAGE", String.format("Payment afer taxes: %f", r));
+//		Log.v("MORTGAGE", String.format("Payment afer taxes: %f", r));
 		
 		return r;
 	}
@@ -63,9 +70,9 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 	 */
 	public double LoanCalculateTheValue(double interest, double amount, int length, Calendar StartDate, String frequency){
 		
-		String Payfrequency = CalculatorActivity.MONTHLY;
+		String Payfrequency = Global.MONTHLY;
 		
-		double r = this.CalculateLoanPayment(interest, amount, length, Payfrequency, StartDate, frequency);
+		double r = this.CalculateLoanPayment(interest, amount, length, Payfrequency, StartDate, frequency, g);
 		
 		return r;
 	}
@@ -82,11 +89,11 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 	
 	
 	//calculate P given A,i,n
-	public double AffordabilityCalculateTheValue(double amount, double interest, int length, String frequency){
+	public double AffordabilityCalculateTheValue(double amount, double interest, int length, String Payfrequency, int lengthFrequencyPosition){
 					
-		Log.v("DURING1 AFFORD", String.format("amount: %f", amount));
-		length= lengthCalculator(length, frequency, Calendar.getInstance(), CalculatorActivity.YEARLY);
-		double i = interestCalculator(interest, frequency);
+//		Log.v("DURING1 AFFORD", String.format("amount: %f", amount));
+		length= lengthCalculator(length, Payfrequency, Calendar.getInstance(), lengthFrequencyCalculator(lengthFrequencyPosition), g);
+		double i = interestCalculator(interest, Payfrequency);
 		
 		double u =Math.pow(1+i, length);
 		double top = amount *(u-1);
@@ -95,7 +102,8 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 		double a = top/bottom;
 		
 		a=Rounder(a);
-//		Log.v("AFFORD", String.format("Initial amount: %f, interest: %f, length: %d, u: %f, final: %f", a,interest, length, u, a ));
+		g.logCat(String.format("Calculated Length: %d", length));
+		Log.i("AFFORD", String.format("Initial amount: %f, interest: %f, calculated i: %f, length: %d, u: %f, final: %f,  frequency: %s", a,interest,i, length, u, a, Payfrequency ));
 		
 		return a;
 		
@@ -103,9 +111,9 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 	
 	
 	//calculate F given A,i,n
-	public double FutureSavingsCalculateTheValue(double amount, double interest, int length, String amountFrequency, String lengthFrequency, double cur, boolean interestState){
+	public double FutureSavingsCalculateTheValue(double amount, double interest, int length, String amountFrequency, int lengthFrequencyPosition, double cur, boolean interestState){
 		
-		length = lengthCalculator(length, amountFrequency, Calendar.getInstance(), lengthFrequency);
+		length = lengthCalculator(length, amountFrequency, Calendar.getInstance(), lengthFrequencyCalculator(lengthFrequencyPosition), g);
 		interest = interestCalculator(interest, amountFrequency);
 		double F =0.0;
 		if(interestState){
@@ -119,13 +127,14 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 			
 			F= F+ f1;
 			F= Rounder(F);			
-			Log.v("FUTURE-B", String.format("Amount: %f , top: %f , interest: %f, calculated length: %d, aF: %s, lf: %s, interest?: %b", amount, top, interest, length, amountFrequency, lengthFrequency, interestState));
+			Log.i("FUTURE-B", String.format("Amount: %f , top: %f , interest: %f, calculated length: %d, aF: %s, lf: %s, interest?: %b, currentSavings: %f", 
+												amount, top, interest, length, amountFrequency, lengthFrequencyPosition, interestState, cur));
 			
 		}
 		else{
 		
 			F = Rounder(amount * length + cur);			
-			Log.v("FUTURE-B", String.format("Amount: %f, interest: %f, calculated length: %d, current savings: %f, final value: %f, interest?: %b",amount, interest, length, cur, F, interestState  ));
+			Log.i("FUTURE-B else", String.format("Amount: %f, interest: %f, calculated length: %d, current savings: %f, final value: %f, interest?: %b",amount, interest, length, cur, F, interestState  ));
 		}
 		
 		return  F;
@@ -137,7 +146,7 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 	//calculate A given F,i,n
 	public double SavingsPlannerCalculateTheValue(double goal, double interest, int length, String amountFrequency, String lengthFrequency, double curr, boolean interestState){
 		
-		length = lengthCalculator(length, amountFrequency, Calendar.getInstance(), lengthFrequency);
+		length = lengthCalculator(length, amountFrequency, Calendar.getInstance(), lengthFrequency, g);
 		interest = interestCalculator(interest, amountFrequency);
 		
 		double A =0.0;
@@ -156,7 +165,7 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 		
 		else{
 			A = Rounder(goal/length - curr);
-			Log.v("SAVINGS-B", String.format("interest: %f, GOAL:%f, length: %d,  Final: %f, interest?: %b", interest,goal, length,  A, interestState));
+//			Log.v("SAVINGS-B", String.format("interest: %f, GOAL:%f, length: %d,  Final: %f, interest?: %b", interest,goal, length,  A, interestState));
 		}
 		return A;
 	}
@@ -171,9 +180,9 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 		
 		String frequency ="";
 		
-		if(pos==0) frequency = CalculatorActivity.WEEKLY;
-		else if(pos==1) frequency = CalculatorActivity.MONTHLY;
-		else if(pos==2) frequency = CalculatorActivity.YEARLY;	
+		if(pos==0) frequency = Global.WEEKLY;
+		else if(pos==1) frequency = Global.MONTHLY;
+		else if(pos==2) frequency = Global.YEARLY;	
 				
 		return frequency;
 	}
@@ -187,10 +196,10 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 		
 		String frequency ="";
 		
-		if(pos==0) frequency = CalculatorActivity.WEEKLY;
-		else if(pos==1) frequency = CalculatorActivity.BIWEEKLY;
-		else if(pos==2) frequency = CalculatorActivity.MONTHLY;
-		else if(pos==3) frequency = CalculatorActivity.YEARLY;
+		if(pos==0) frequency = Global.WEEKLY;
+		else if(pos==1) frequency = Global.BIWEEKLY;
+		else if(pos==2) frequency = Global.MONTHLY;
+		else if(pos==3) frequency = Global.YEARLY;
 		
 		return frequency;
 	}

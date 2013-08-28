@@ -15,6 +15,14 @@ public class MortgageCalculatorFragment extends CalculatorFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		mortgageView = new MortgageCalculatorView(getActivity());
+		mortgageView.unDate.setFragmentManager(getChildFragmentManager());
+		
+		mortgageView.amount.seekBar.setOnSeekBarLongPressListener(this);
+		mortgageView.interest.seekBar.setOnSeekBarLongPressListener(this);
+		mortgageView.yearlyTaxes.seekBar.setOnSeekBarLongPressListener(this);
+		mortgageView.downPayment.seekBar.setOnSeekBarLongPressListener(this);
+		
+		
 		return mortgageView;
 	}
 
