@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.jeannius.tallycap">
+
+    <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/affordabilityCalculatorAmountMySeekBarWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin_standard"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/amount"
+        app:max="@integer/a_million"
+        app:type="money_frequency" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+    <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/affordabilityCalculatorInterestMySeekBarWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/affordabilityCalculatorAmountMySeekBarWidget"
+        android:layout_marginLeft="@dimen/left_margin_standard"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/interest_rate"
+        app:max="@integer/fifty"
+        app:type="percent" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+    <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/affordabilityCalculatorLengthMySeekBarWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/affordabilityCalculatorInterestMySeekBarWidget"
+        android:layout_marginLeft="@dimen/left_margin_standard"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/length"
+        app:max="@integer/one_hundred"
+        app:type="time" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+    <TextView
+        android:id="@+id/affordabilityCalculatorResultTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/affordabilityCalculatorLengthMySeekBarWidget"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:alpha="0"
+        android:gravity="center"
+        android:textColor="@color/text_regular_color" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/affordabilityCalculatorResultTextView"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/affordabilityCalculatorCalculateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:text="@string/calculate" 
+            />
+
+        <Button
+            android:id="@+id/affordabilityCalculatorWhatIfButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/what_if" 
+            />
+    </LinearLayout>
+
+</RelativeLayout>

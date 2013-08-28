@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.jeannius.tallycap" xmlns:app1="http://schemas.android.com/tools">
+
+    <com.jeannius.tallycap.util.MyUneditableDateEditText
+        android:id="@+id/autoCalculatorMyUneditableDateEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin_standard"
+        android:layout_marginTop="@dimen/top_spacing" >
+
+    </com.jeannius.tallycap.util.MyUneditableDateEditText>
+
+    <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/autoCalculatorAmountMySeekBarWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/autoCalculatorMyUneditableDateEditText"
+        android:layout_marginLeft="@dimen/side_margin"
+        android:layout_marginRight="@dimen/side_margin"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/amount"
+        app:max="@integer/a_million"
+        app:type="money" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+    <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/autoCalculatorInterestMySeekBarWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/autoCalculatorAmountMySeekBarWidget"
+        android:layout_marginLeft="@dimen/side_margin"
+        android:layout_marginRight="@dimen/side_margin"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/interest_rate"
+        app:max="@integer/fifty"
+        app:type="percent" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+    <com.jeannius.tallycap.util.MySpinnerContainer
+        android:id="@+id/autoCalculatorLengthMySpinnerContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/autoCalculatorMyUneditableDateEditText"
+        android:layout_below="@+id/autoCalculatorInterestMySeekBarWidget"
+        android:layout_marginLeft="@dimen/side_margin"
+        android:layout_marginRight="@dimen/side_margin"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/length_1"
+        app:preferred_selection="3"
+        app:res_id="@array/auto_loan_length" >
+
+    </com.jeannius.tallycap.util.MySpinnerContainer>
+
+    <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/autoCalculatorTradeInValueMySeekBarWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/autoCalculatorLengthMySpinnerContainer"
+        android:layout_marginLeft="@dimen/side_margin"
+        android:layout_marginRight="@dimen/side_margin"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/trade_in_value"
+        app:max="@integer/five_thousand"
+        app:type="money" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+    <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/autoCalculatorDownPaymentMySeekBarWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/autoCalculatorTradeInValueMySeekBarWidget"
+        android:layout_marginLeft="@dimen/side_margin"
+        android:layout_marginRight="@dimen/side_margin"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/down_payment"
+        app:max="@integer/five_thousand"
+        app:type="money" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+    <TextView
+        android:id="@+id/autoCalculatorResultTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/autoCalculatorDownPaymentMySeekBarWidget"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:alpha="0"
+        android:gravity="center"
+        android:textColor="@color/text_regular_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/autoCalculatorResultTextView"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/autoCalculatorCalculateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/top_spacing"
+            android:text="@string/calculate"
+            android:textSize="@dimen/text_size_large"
+            app1:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/autoCalculatorWhatIfButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/what_if"
+            app1:ignore="ButtonStyle" />
+    </LinearLayout>
+
+</RelativeLayout>

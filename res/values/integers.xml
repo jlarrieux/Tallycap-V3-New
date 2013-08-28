@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="a_million">1000000</integer>
+    <integer name="ten_million">10000000</integer>
+    <integer name="a_billion">1000000000</integer>
+    <integer name="fifty">50</integer>
+    <integer name="five_thousand">5000</integer>
+    <integer-array name="dynamic_max">             
+        <item >10</item>
+        <item >50</item>
+        <item >100</item>
+        <item >500</item>
+        <item >1000</item>
+        <item >5000</item>
+        <item >10000</item>
+        <item >50000</item>
+        <item >100000</item>
+        <item >500000</item>
+        <item >1000000</item>
+        <item >5000000</item>
+        <item >10000000</item>
+        <item >50000000</item>
+        <item >100000000</item>
+        <item >500000000</item>
+        <item >1000000000</item>
+    </integer-array>
+    <integer-array name="dynamic_max_interest"> 
+        <item >100</item>        
+        <item >1000</item>
+        <item >5000</item>
+    </integer-array>
+    <integer name="one_hundred">100</integer>
+</resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app1="http://schemas.android.com/apk/res/com.jeannius.tallycap">
+
+    <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/savingsPlannerCalculatorGoalMySeekBarWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin_standard"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/goal"
+        app1:max="@integer/a_billion"
+        app1:type="money" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+    <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/savingsPlannerCalculatorLengthMySeekBarWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/savingsPlannerCalculatorGoalMySeekBarWidget"
+        android:layout_marginLeft="@dimen/left_margin_standard"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/length"
+        app1:max="@integer/fifty"
+        app1:preferred_spinner_selection="2"
+        app1:type="time" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+    <com.jeannius.tallycap.util.MySpinnerContainer
+        android:id="@+id/savingsPlannerCalculatorFrequencyMySpinnerContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/savingsPlannerCalculatorLengthMySeekBarWidget"
+        android:layout_marginLeft="@dimen/left_margin_standard"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/frequency_of_saving1"
+        app1:res_id="@array/frequency_array" >
+
+    </com.jeannius.tallycap.util.MySpinnerContainer>
+
+    <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/savingsPlannerCalculatorIntertestRateMySeekBarWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/savingsPlannerCalculatorFrequencyMySpinnerContainer"
+        android:layout_marginLeft="@dimen/left_margin_standard"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/interest_rate"
+        app1:max="@integer/fifty"
+        app1:type="percent" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+    <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/savingsPlannerCalculatorCurrentSavingsMySeekBarWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/savingsPlannerCalculatorIntertestRateMySeekBarWidget"
+        android:layout_marginLeft="@dimen/left_margin_standard"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/current_savings"
+        app1:max="@integer/a_billion"
+        app1:type="money" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+    <TextView
+        android:id="@+id/savingsPlannerCalculatorResultTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/savingsPlannerCalculatorCurrentSavingsMySeekBarWidget"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:alpha="0"
+        android:gravity="center"
+        android:textColor="@color/text_regular_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/savingsPlannerCalculatorResultTextView"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/savingsPlannerCalculatorCalculateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/top_spacing"
+            android:text="@string/calculate"
+            android:textSize="@dimen/text_size_large"
+            app:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/savingsPlannerCalculatorWhatIfButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/what_if"
+            app:ignore="ButtonStyle" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.jeannius.tallycap"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="5dp"
+    android:orientation="vertical"
+    android:paddingLeft="5dp" >
+
+    <Spinner
+        android:id="@+id/tempInterpolatorSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:entries="@array/temp_interpolator_arrays" />
+
+    <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/tempTimeMySeekBarWidget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:max="5000"
+        app:min="50"
+        app:type="time" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+</RelativeLayout>

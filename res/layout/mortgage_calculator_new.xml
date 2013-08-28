@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.jeannius.tallycap">
+
+    <com.jeannius.tallycap.util.MyUneditableDateEditText
+        android:id="@+id/mortgageCalculatorStartDateMyUneditableDateEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin_standard"
+        android:layout_marginTop="@dimen/top_spacing" >
+
+    </com.jeannius.tallycap.util.MyUneditableDateEditText>
+
+   <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/mortgageCalculatorAmountMyseekBarWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mortgageCalculatorStartDateMyUneditableDateEditText"
+        android:layout_marginLeft="@dimen/left_margin_standard"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/amount"
+        app:max="@integer/a_billion"
+        app:preferred_spinner_selection="0"
+        app:type="money" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+   <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/mortgageCalculatorIntertestMyseekBarWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mortgageCalculatorAmountMyseekBarWidget"
+        android:layout_marginLeft="@dimen/left_margin_standard"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/interest_rate"
+        app:max="@integer/fifty"
+        app:type="percent" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+     <com.jeannius.tallycap.util.MySpinnerContainer
+         android:id="@+id/mortgageCalculatorLengthSpinnerContainer"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/mortgageCalculatorIntertestMyseekBarWidget"
+         android:layout_marginLeft="@dimen/left_margin_standard"
+         android:layout_marginTop="@dimen/top_spacing"
+         android:tag="@string/length_1"
+         app:preferred_selection="2"
+         app:res_id="@array/mortgage_loan_length" >
+
+    </com.jeannius.tallycap.util.MySpinnerContainer>
+
+    <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/mortgageCalculatorYearlyTaxesmMySeekBarWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mortgageCalculatorLengthSpinnerContainer"
+        android:layout_marginLeft="@dimen/left_margin_standard"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/yearly_taxes"
+        app:max="@integer/fifty"
+        app:type="money_percent_or_fixed" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+    <com.jeannius.tallycap.util.MySeekBarWidget
+        android:id="@+id/mortgageCalculatorDownPaymentMySeekBarWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mortgageCalculatorYearlyTaxesmMySeekBarWidget"
+        android:layout_marginLeft="@dimen/left_margin_standard"
+        android:layout_marginTop="@dimen/top_spacing"
+        android:tag="@string/down_payment"
+        app:max="@integer/fifty"
+        app:type="money_percent_or_fixed" >
+
+    </com.jeannius.tallycap.util.MySeekBarWidget>
+
+    <TextView
+        android:id="@+id/mortgageCalculatorResultTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mortgageCalculatorDownPaymentMySeekBarWidget"
+        android:alpha="0"
+        android:gravity="center"
+        android:textColor="@color/text_regular_color" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mortgageCalculatorResultTextView"
+        android:gravity="center"
+        android:measureWithLargestChild="true" >
+
+        <Button
+            android:id="@+id/mortgageCalculatorCalculateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:minWidth="120dip"
+            android:text="@string/calculate" />
+
+        <Button
+            android:id="@+id/mortgageCalculatorWhatIfButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:minWidth="120dip"
+            android:text="@string/what_if" />
+    </LinearLayout>
+
+</RelativeLayout>
