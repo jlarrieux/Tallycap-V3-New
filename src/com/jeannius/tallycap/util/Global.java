@@ -158,6 +158,9 @@ public class Global extends View {
 	
 	
 	
+	
+	
+	
 	public TimeInterpolator getInterpolator(int pos){
 		
 		switch(pos){

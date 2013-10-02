@@ -102,5 +102,13 @@ public class myViewPager extends ViewPager implements SubjectToObservers{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
+
+
+	@Override
+	public int getObserverCount() {		
+		return additional.size();
+	}
 	
 }

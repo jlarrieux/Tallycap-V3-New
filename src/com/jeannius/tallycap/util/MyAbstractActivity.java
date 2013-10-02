@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 import com.jeannius.tallycap.CalculatorActivity;
+import com.jeannius.tallycap.R;
 
 public abstract class MyAbstractActivity extends SherlockFragmentActivity {
 	public static final String CALCULATOR="Calculator";
@@ -59,7 +62,13 @@ public abstract class MyAbstractActivity extends SherlockFragmentActivity {
 	 
 	 
 	 
-	 
+	 @Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		
+	 	MenuInflater inflater = getSherlock().getMenuInflater();
+		inflater.inflate(R.menu.main_overflow, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
 	 
 	 
 	 

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.jeannius.tallycap"
+    xmlns:app1="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.jeannius.tallycap" xmlns:app1="http://schemas.android.com/tools">
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true" >
 
     <com.jeannius.tallycap.util.MySeekBarWidget
         android:id="@+id/creditCardCalculatorBalanceMySeekBarWidget"
@@ -12,7 +15,6 @@
         android:tag="@string/balance"
         app:max="@integer/ten_million"
         app:type="money" >
-
     </com.jeannius.tallycap.util.MySeekBarWidget>
 
     <com.jeannius.tallycap.util.MySeekBarWidget
@@ -25,7 +27,6 @@
         android:tag="@string/interest_rate"
         app:max="@integer/fifty"
         app:type="percent" >
-
     </com.jeannius.tallycap.util.MySeekBarWidget>
 
     <com.jeannius.tallycap.util.MySeekBarWidget
@@ -38,53 +39,65 @@
         android:tag="@string/credit_limit"
         app:max="@integer/ten_million"
         app:type="money" >
-
     </com.jeannius.tallycap.util.MySeekBarWidget>
 
-    <com.jeannius.tallycap.util.MySeekBarWidget
-        android:id="@+id/creditCardCalculatorMonthlyFeeMySeekBarWidget"
+    <Switch
+        android:id="@+id/creditCardCalculatorMoreOptionSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/creditCardCalculatorCreditLimitMySeekBarWidget"
         android:layout_marginLeft="@dimen/left_margin_standard"
         android:layout_marginTop="@dimen/top_spacing"
-        android:tag="@string/monthly_fee"
-        app:max="@integer/five_thousand"
-        app:type="money" >
+        android:text="@string/more_options" />
 
-    </com.jeannius.tallycap.util.MySeekBarWidget>
-
-    <com.jeannius.tallycap.util.MySeekBarWidget
-        android:id="@+id/creditCardCalculatorAnnualFeeMySeekBarWidget"
+    <LinearLayout
+        android:id="@+id/creditCardCalculatorMoreOptionLinearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/creditCardCalculatorMonthlyFeeMySeekBarWidget"
-        android:layout_marginLeft="@dimen/left_margin_standard"
+        android:layout_below="@id/creditCardCalculatorMoreOptionSwitch"
         android:layout_marginTop="@dimen/top_spacing"
-        android:tag="@string/annual_fee"
-        app:max="@integer/five_thousand"
-        app:type="money_month" >
+        android:orientation="vertical"
+        android:visibility="gone" >
 
-    </com.jeannius.tallycap.util.MySeekBarWidget>
+        <com.jeannius.tallycap.util.MySeekBarWidget
+            android:id="@+id/creditCardCalculatorMonthlyFeeMySeekBarWidget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/left_margin_standard"
+            android:layout_marginTop="@dimen/top_spacing"
+            android:tag="@string/monthly_fee"
+            app:max="@integer/five_thousand"
+            app:type="money" >
+        </com.jeannius.tallycap.util.MySeekBarWidget>
 
-    <com.jeannius.tallycap.util.MySeekBarWidget
-        android:id="@+id/creditCardCalculatorOverTheLimitFeeMySeekBarWidget"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/creditCardCalculatorAnnualFeeMySeekBarWidget"
-        android:layout_marginLeft="@dimen/left_margin_standard"
-        android:layout_marginTop="@dimen/top_spacing"
-        android:tag="@string/over_the_limit_fee"
-        app:max="@integer/five_thousand"
-        app:type="money" >
+        <com.jeannius.tallycap.util.MySeekBarWidget
+            android:id="@+id/creditCardCalculatorAnnualFeeMySeekBarWidget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/left_margin_standard"
+            android:layout_marginTop="@dimen/top_spacing"
+            android:tag="@string/annual_fee"
+            app:max="@integer/five_thousand"
+            app:type="money_month" >
+        </com.jeannius.tallycap.util.MySeekBarWidget>
 
-    </com.jeannius.tallycap.util.MySeekBarWidget>
+        <com.jeannius.tallycap.util.MySeekBarWidget
+            android:id="@+id/creditCardCalculatorOverTheLimitFeeMySeekBarWidget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/left_margin_standard"
+            android:layout_marginTop="@dimen/top_spacing"
+            android:tag="@string/over_the_limit_fee"
+            app:max="@integer/five_thousand"
+            app:type="money" >
+        </com.jeannius.tallycap.util.MySeekBarWidget>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/creditCardCalculatorResultTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/creditCardCalculatorOverTheLimitFeeMySeekBarWidget"
+        android:layout_below="@id/creditCardCalculatorMoreOptionLinearLayout"
         android:layout_marginTop="@dimen/top_spacing"
         android:gravity="center"
         android:textColor="@color/text_regular_color" />

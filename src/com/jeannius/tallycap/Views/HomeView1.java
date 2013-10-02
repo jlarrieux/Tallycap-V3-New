@@ -94,4 +94,10 @@ public class HomeView1 extends RelativeLayout implements SubjectToObservers, OnC
 		
 	}
 
+	@Override
+	public int getObserverCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

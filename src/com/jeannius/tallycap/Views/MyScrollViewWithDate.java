@@ -13,9 +13,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ScrollView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.actionbarsherlock.ActionBarSherlock.OnOptionsItemSelectedListener;
@@ -26,7 +30,7 @@ import com.jeannius.tallycap.R;
 import com.jeannius.tallycap.util.Global;
 import com.jeannius.tallycap.util.MyUneditableDateEditText;
 
-public abstract class MyScrollViewWithDate extends ScrollView implements OnClickListener, OnDateSetListener, OnOptionsItemSelectedListener{
+public abstract class MyScrollViewWithDate extends ScrollView implements OnClickListener, OnDateSetListener, OnOptionsItemSelectedListener, OnCheckedChangeListener{
 	
 	
 	private MyUneditableDateEditText dateText;
@@ -35,6 +39,8 @@ public abstract class MyScrollViewWithDate extends ScrollView implements OnClick
 	private PopupWindow pop;
 	public Global g;
 	protected int fifty;
+	public LinearLayout moreOptionsLinearLayout;
+	public Switch moreOptionSwitch;
 	
 	
 	public MyScrollViewWithDate(Context context) {
@@ -66,13 +72,15 @@ public abstract class MyScrollViewWithDate extends ScrollView implements OnClick
 		dateText.setOnClickListener(this);
 		g= new Global(context);
 		nf = (DecimalFormat) NumberFormat.getInstance(getResources().getConfiguration().locale);
-		LayoutTransition l = new LayoutTransition();
-		this.setLayoutTransition(l);
+		LayoutTransition ltr = new LayoutTransition();
+		
+		this.setLayoutTransition(ltr);
 		pop = new PopupWindow(context);
 //		TempPopUpAnimatoOption t = new TempPopUpAnimatoOption(context);
 //		pop.setContentView(t);
 		pop.setWidth(600);
 		pop.setHeight(400);
+		
 		
 		
 	}
@@ -184,8 +192,26 @@ public abstract class MyScrollViewWithDate extends ScrollView implements OnClick
 	protected abstract void whatif();
 	
 	
+	@Override
+	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				
+		
+		if(isChecked) 	moreOptionsLinearLayout.setVisibility(View.VISIBLE);			
+		
+		else moreOptionsLinearLayout.setVisibility(View.GONE);		
+
+	}
+	
+	
+
 	
 	
 	
+	
+	
+	
+	
+	
+
 
 }

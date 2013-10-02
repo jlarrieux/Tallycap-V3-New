@@ -21,9 +21,19 @@ public class MortgageCalculatorFragment extends CalculatorFragment {
 		mortgageView.interest.seekBar.setOnSeekBarLongPressListener(this);
 		mortgageView.yearlyTaxes.seekBar.setOnSeekBarLongPressListener(this);
 		mortgageView.downPayment.seekBar.setOnSeekBarLongPressListener(this);
+		mortgageView.HOA.seekBar.setOnSeekBarLongPressListener(this);
+		mortgageView.HomeownersInsurance.seekBar.setOnSeekBarLongPressListener(this);
+		
+		mortgageView.amount.progressSetter(100000, false);
+		mortgageView.interest.progressSetter(400, false);
+		
+		mortgageView.yearlyTaxes.setInitialValuePercent(200);
+		
 		
 		
 		return mortgageView;
 	}
 
+	
+	
 }

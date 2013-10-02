@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.jeannius.tallycap.R;
@@ -22,6 +24,7 @@ public class K401kCalculatorView extends MyScrollViewWithDate implements OnItemS
 	
 	
 	public MySeekBarWidget annualSalary, contribution, yearToRetirement, rateOfReturn, annualIncrease, currentSavings, employerMatch, employerLimit; 
+	
 	
 	public K401kCalculatorView(Context context) {
 		super(context);
@@ -53,10 +56,13 @@ public class K401kCalculatorView extends MyScrollViewWithDate implements OnItemS
 		whatIf = (Button) findViewById(R.id.K401kCalculatorWhatIfButton);
 		
 		result = (TextView) findViewById(R.id.k401KCalculatorResultTextView);
+		moreOptionSwitch = (Switch) findViewById(R.id.k401kCalculatorMoreOptionSwitch);
+		moreOptionsLinearLayout = (LinearLayout) findViewById(R.id.k401kCalculatorMoreOptionLinearLayout);
 		
 		calculate.setOnClickListener(this);
 		contribution.mSpinner.setOnItemSelectedListener(this);
 		annualSalary.registerObserver(contribution);
+		moreOptionSwitch.setOnCheckedChangeListener(this);
 		
 	}
 

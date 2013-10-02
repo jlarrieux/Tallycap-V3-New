@@ -21,6 +21,8 @@ public class AutoCalculatorFragment extends CalculatorFragment {
 			autoView.interest.seekBar.setOnSeekBarLongPressListener(this);
 			autoView.tradeInValue.seekBar.setOnSeekBarLongPressListener(this);
 			autoView.downPayment.seekBar.setOnSeekBarLongPressListener(this);
+			autoView.amount.progressSetter(10000, false);
+			autoView.interest.progressSetter(500, false);
 			
 		return autoView;
 	}

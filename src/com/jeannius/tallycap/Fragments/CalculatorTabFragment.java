@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.actionbarsherlock.app.SherlockFragment;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.jeannius.tallycap.R;
 import com.jeannius.tallycap.util.CalculatorViewPagerAdapter;
@@ -75,12 +73,7 @@ public class CalculatorTabFragment extends SherlockFragment implements ObserverO
 		
 	}
 	
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		inflater.inflate(R.menu.main_overflow, menu);
-		
-		super.onCreateOptionsMenu(menu, inflater);
-	}
+
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -91,6 +84,14 @@ public class CalculatorTabFragment extends SherlockFragment implements ObserverO
 			d2.show(getFragmentManager(), "");
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+
+
+	@Override
+	public int getCurrentMode() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 

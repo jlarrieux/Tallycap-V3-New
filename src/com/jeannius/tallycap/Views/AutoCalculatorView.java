@@ -2,7 +2,6 @@ package com.jeannius.tallycap.Views;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -51,9 +50,13 @@ public class AutoCalculatorView extends MyScrollViewWithDate {
 		downPayment = (MySeekBarWidget) findViewById(R.id.autoCalculatorDownPaymentMySeekBarWidget);
 		result = (TextView) findViewById(R.id.autoCalculatorResultTextView);
 		
-		amount.registerObserver(tradeInValue);
-		amount.registerObserver(downPayment);
+		tradeInValue.current_mode = MySeekBarWidget.MAX_CODEPENDENT;
+		downPayment.current_mode = MySeekBarWidget.MAX_CODEPENDENT;
+		
+//		amount.registerObserver(tradeInValue);
+//		amount.registerObserver(downPayment);
 		calculate.setOnClickListener(this);
+		
 		
 	}
 

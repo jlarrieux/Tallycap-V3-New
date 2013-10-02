@@ -25,7 +25,9 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.ads.o;
 import com.jeannius.tallycap.R;
+import com.jeannius.tallycap.Views.MortgageCalculatorView;
 
 public class MySeekBarWidget extends LinearLayout implements OnSeekBarChangeListener, View.OnTouchListener, AnimatorListener, OnItemClickListener, SubjectToObservers, ObserverOfSubject {
 	
@@ -47,12 +49,21 @@ public class MySeekBarWidget extends LinearLayout implements OnSeekBarChangeList
 	private String range;
 	public Spinner mSpinner;
 	private int oldProgress=0, originalProgress, padding;
-//	private long timeDelay=0;
+
 	private boolean stopBit, noSwitch=false;
 	private int milliseconds=1100;
 	public int scaleFactor =100;
 	private double currentValue;
 	private ArrayList<MySeekBarWidget> observers;
+	private int initialValuePercent =0;
+	private int initialValueAmount =0;
+	
+
+	
+	public int current_mode =VALUE_DEPENDENT;
+	
+	
+	private String classs, function;
 	
 
 	public MySeekBarWidget(Context context) {
@@ -99,16 +110,19 @@ public class MySeekBarWidget extends LinearLayout implements OnSeekBarChangeList
 	
 		g =new Global(context);
 		this.setOrientation(LinearLayout.VERTICAL);
-		seekBar = (MySeekBar) findViewById(R.id.MySeekBarWidgetSeekBar);
 		
-		seekBarAmountTextView= (TextView) findViewById(R.id.MySeekBarWidgetAmountTextView);
-		mSpinner = (Spinner) findViewById(R.id.MySeekBarWidgetTimeLengthSpinner);
-		
-		
-		nameTextView = (TextView) findViewById(R.id.MySeekBarWidgetNameTextView);
 		
 		
 		if(!this.isInEditMode()){
+			
+			
+			seekBar = (MySeekBar) findViewById(R.id.MySeekBarWidgetSeekBar);
+			
+			seekBarAmountTextView= (TextView) findViewById(R.id.MySeekBarWidgetAmountTextView);
+			mSpinner = (Spinner) findViewById(R.id.MySeekBarWidgetTimeLengthSpinner);
+			
+			
+			nameTextView = (TextView) findViewById(R.id.MySeekBarWidgetNameTextView);
 			seekBar.setMin(minAbsolute);
 			setSeekBarLayout();
 		
@@ -132,7 +146,7 @@ public class MySeekBarWidget extends LinearLayout implements OnSeekBarChangeList
 		
 						
 			
-		
+		seekBar.setProgress(0);
 		
 		
 		
@@ -165,8 +179,8 @@ public class MySeekBarWidget extends LinearLayout implements OnSeekBarChangeList
 		setMyText(seekBar.getProgress());
 		
 		
-		}
-		
+		}		
+
 		
 	}
 	
@@ -256,7 +270,6 @@ public class MySeekBarWidget extends LinearLayout implements OnSeekBarChangeList
 		oldProgress = progress;
 		originalProgress = progress;
 		setMyText(progress);
-//		g.logCat(String.format("Progress: %d  fromuser: %b", progress, fromUser));
 		
 	}
 
@@ -542,25 +555,53 @@ public class MySeekBarWidget extends LinearLayout implements OnSeekBarChangeList
 		maxAbsolute =(int) newMaxAbsolute;
 		absoluteToRelativeMax();
 	}
+	
+	
+	
+	
+	
 
+
+	// this is to notify all observers
 	@Override
 	public void notifyObserver() {
 		
-		MySeekBarWidget temp;
-		double max = getCurrentValue()-getSum()-1;
-		if(max<=0) max=0;
-		
-		for(int i=0; i<observers.size(); i++){
+		if(observers.size()>0){
 			
-			temp=observers.get(i);
-			temp.setMaxAbsolute(max+temp.getCurrentValue()); 
-			temp.absoluteToRelativeMax();
+		
+			StackTraceElement e = (Thread.currentThread().getStackTrace())[2];
+			
+			
+			function = e.getMethodName();
+			
+			MySeekBarWidget temp;
+//			g.toaster(String.format("NOTIFYING, count = %d, \nPrevious-2 Method: %s\nCurrent one: %s",observers.size(), function, getTag() ), false);
+			double max = getCurrentValue()-getSum()-1;
+			if(max<=0) max=0;
+			
+			for(int i=0; i<observers.size(); i++){
+				
+				
+				temp=observers.get(i);
+//				g.toaster(String.format("NOTIFYING!!! MODE: %d,  count: %d, i :%d\nName: %s",temp.current_mode, observers.size(), i, temp.getTag() ), false);
+				if(temp.getCurrentMode()==MAX_CODEPENDENT){
+					temp.setMaxAbsolute(max+temp.getCurrentValue()); 
+					temp.absoluteToRelativeMax();
+				}
+				else if(temp.getCurrentMode()==VALUE_DEPENDENT){
+					
+					double val =MortgageCalculatorView.updateValue(getCurrentValue());
+					temp.progressSetter((int)val , false);
+//					g.toaster(String.format("Notified:%s    val: %d",temp.getTag(), ((int)val)), true);
+	
+				}
+				
+			}
 		}
-		
-//		g.logCat(String.format("VALUE TO MAX: %f, progress: %d", getCurrentValue(), seekBar.getProgress()));
-		
 	}
 	
+	
+
 	
 	
 	//this function get the sum of all the observers to determine max value
@@ -572,10 +613,13 @@ public class MySeekBarWidget extends LinearLayout implements OnSeekBarChangeList
 			
 		return sum;
 	}
-
+	
+	
+	//this function register an observer
 	@Override
 	public void registerObserver(ObserverOfSubject obs) {
 		observers.add((MySeekBarWidget) obs); 
+//		g.toaster(String.format("%s REGISTERED", ((MySeekBarWidget)obs).getTag()),  false);
 		notifyObserver();
 		
 	}
@@ -589,10 +633,28 @@ public class MySeekBarWidget extends LinearLayout implements OnSeekBarChangeList
 	@Override
 	public void removeObserver() {
 		if(observers.size()>0) 	observers.clear();
-//		setMyText(getCurrentValue());
+//		StackTraceElement e = (Thread.currentThread().getStackTrace())[2];
+		
+		
+//		function = e.getMethodName();
+		
+//		g.toaster(String.format("ALL OBSERVERS REMOVED BECAUSE OF: \n%s", function), true);
 		
 	}
-
+	
+	
+	public void removedObserversWithMode(int mode){
+		
+		MySeekBarWidget temp2;
+		for(int i=0; i<observers.size(); i++){
+			temp2 =observers.get(i);
+			if(temp2.current_mode==mode) observers.remove(i);
+			
+		}
+		
+	}
+	
+	
 	@Override
 	public void update(Object o) {
 		
@@ -604,6 +666,8 @@ public class MySeekBarWidget extends LinearLayout implements OnSeekBarChangeList
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 	
 	
 	
@@ -657,13 +721,47 @@ public class MySeekBarWidget extends LinearLayout implements OnSeekBarChangeList
 	public int getSpinnerSelectedPosition(){
 		return mSpinner.getSelectedItemPosition();
 	}
+
+	@Override
+	public int getCurrentMode() {		
+		return current_mode;
+	}
+
+	@Override
+	public int getObserverCount() {		
+		return observers.size();
+	}
+
+	
+	
+	public ArrayList<MySeekBarWidget> getAllObservers(){
+		
+		return observers;
+	}
 	
 	
 	
+	//this next function sets the initial value Amount
+	public void setInitialValueAmount(int value){		
+		initialValueAmount = value;
+		progressSetter(value, false);
+	}
 	
 	
+	//this next function sets the initial value Percent
+		public void setInitialValuePercent(int value){		
+			initialValuePercent = value;
+			progressSetter(value, false);
+		}
 	
-	
-	
+	//this next function get the initial value Amount
+		public int getInitialValueAmount(){			
+			return initialValueAmount;
+		}
+		
+	//returns the initial value percernt
+		public int getInitialValuePercent(){
+			return initialValuePercent;
+		}
 
 }

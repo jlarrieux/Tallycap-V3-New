@@ -93,6 +93,11 @@ public class myTabPageIndicator extends TabPageIndicator  implements SubjectToOb
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public int getObserverCount() {		
+		return additional2.size();
+	}
 	
 	
 	

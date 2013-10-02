@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.jeannius.tallycap"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.jeannius.tallycap">
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true" >
 
     <com.jeannius.tallycap.util.MySeekBarWidget
         android:id="@+id/k401kCalculatorAnnualSalaryMySeekBarWidget"
@@ -12,7 +14,6 @@
         android:tag="@string/annual_salary"
         app:max="@integer/a_billion"
         app:type="money" >
-
     </com.jeannius.tallycap.util.MySeekBarWidget>
 
     <com.jeannius.tallycap.util.MySeekBarWidget
@@ -25,7 +26,6 @@
         android:tag="@string/contribution"
         app:max="@integer/fifty"
         app:type="money_percent_or_fixed" >
-
     </com.jeannius.tallycap.util.MySeekBarWidget>
 
     <com.jeannius.tallycap.util.MySeekBarWidget
@@ -38,7 +38,6 @@
         android:tag="@string/years_to_retirement"
         app:max="@integer/one_hundred"
         app:type="time_year_only" >
-
     </com.jeannius.tallycap.util.MySeekBarWidget>
 
     <com.jeannius.tallycap.util.MySeekBarWidget
@@ -51,66 +50,76 @@
         android:tag="@string/rate_of_return"
         app:max="@integer/fifty"
         app:type="percent" >
-
     </com.jeannius.tallycap.util.MySeekBarWidget>
 
-    <com.jeannius.tallycap.util.MySeekBarWidget
-        android:id="@+id/k401kCalculatorAnnualIncreaseMySeekBarWidget"
+    <Switch
+        android:id="@+id/k401kCalculatorMoreOptionSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/k401kCalculatorRateOfReturnMySeekBarWidget"
         android:layout_marginLeft="@dimen/left_margin_standard"
         android:layout_marginTop="@dimen/top_spacing"
-        android:tag="@string/annual_increase"
-        app:max="@integer/fifty"
-        app:type="percent" >
+        android:text="@string/more_options" />
 
-    </com.jeannius.tallycap.util.MySeekBarWidget>
-
-    <com.jeannius.tallycap.util.MySeekBarWidget
-        android:id="@+id/k401kCalculatorCurrentSavingsMySeekBarWidget"
+    <LinearLayout
+        android:id="@+id/k401kCalculatorMoreOptionLinearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/k401kCalculatorAnnualIncreaseMySeekBarWidget"
-        android:layout_marginLeft="@dimen/left_margin_standard"
-        android:layout_marginTop="@dimen/top_spacing"
-        android:tag="@string/current_savings"
-        app:max="@integer/a_billion"
-        app:type="money" >
+        android:layout_below="@id/k401kCalculatorMoreOptionSwitch"
+        android:orientation="vertical"
+        android:visibility="gone" >
 
-    </com.jeannius.tallycap.util.MySeekBarWidget>
+        <com.jeannius.tallycap.util.MySeekBarWidget
+            android:id="@+id/k401kCalculatorAnnualIncreaseMySeekBarWidget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/left_margin_standard"
+            android:layout_marginTop="@dimen/top_spacing"
+            android:tag="@string/annual_increase"
+            app:max="@integer/fifty"
+            app:type="percent" >
+        </com.jeannius.tallycap.util.MySeekBarWidget>
 
-    <com.jeannius.tallycap.util.MySeekBarWidget
-        android:id="@+id/k401kCalculatorEmployersMatchMySeekBarWidget"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/k401kCalculatorCurrentSavingsMySeekBarWidget"
-        android:layout_marginLeft="@dimen/left_margin_standard"
-        android:layout_marginTop="@dimen/top_spacing"
-        android:tag="@string/employer_match"
-        app:max="@integer/fifty"
-        app:type="percent" >
+        <com.jeannius.tallycap.util.MySeekBarWidget
+            android:id="@+id/k401kCalculatorCurrentSavingsMySeekBarWidget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/left_margin_standard"
+            android:layout_marginTop="@dimen/top_spacing"
+            android:tag="@string/current_savings"
+            app:max="@integer/a_billion"
+            app:type="money" >
+        </com.jeannius.tallycap.util.MySeekBarWidget>
 
-    </com.jeannius.tallycap.util.MySeekBarWidget>
+        <com.jeannius.tallycap.util.MySeekBarWidget
+            android:id="@+id/k401kCalculatorEmployersMatchMySeekBarWidget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/left_margin_standard"
+            android:layout_marginTop="@dimen/top_spacing"
+            android:tag="@string/employer_match"
+            app:max="@integer/fifty"
+            app:type="percent" >
+        </com.jeannius.tallycap.util.MySeekBarWidget>
 
-    <com.jeannius.tallycap.util.MySeekBarWidget
-        android:id="@+id/k401kCalculatorEmployersLimitMySeekBarWidget"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/k401kCalculatorEmployersMatchMySeekBarWidget"
-        android:layout_marginLeft="@dimen/left_margin_standard"
-        android:layout_marginTop="@dimen/top_spacing"
-        android:tag="@string/employer_limit"
-        app:max="@integer/fifty"
-        app:type="percent" >
-
-    </com.jeannius.tallycap.util.MySeekBarWidget>
+        <com.jeannius.tallycap.util.MySeekBarWidget
+            android:id="@+id/k401kCalculatorEmployersLimitMySeekBarWidget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/left_margin_standard"
+            android:layout_marginTop="@dimen/top_spacing"
+            android:tag="@string/employer_limit"
+            app:max="@integer/fifty"
+            app:type="percent" >
+        </com.jeannius.tallycap.util.MySeekBarWidget>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/k401KCalculatorResultTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/k401kCalculatorEmployersLimitMySeekBarWidget"
+        android:layout_below="@id/k401kCalculatorMoreOptionLinearLayout"
+        android:layout_marginTop="@dimen/top_spacing"
         android:alpha="0"
         android:gravity="center"
         android:textColor="@color/text_regular_color" />
@@ -119,6 +128,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/k401KCalculatorResultTextView"
+        android:layout_marginTop="@dimen/top_spacing"
         android:gravity="center"
         android:paddingBottom="15dp" >
 

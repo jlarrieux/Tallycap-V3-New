@@ -144,5 +144,14 @@
                             <string name="nothing">nothing</string>
                             <string name="length_1">Length:</string>
                             <string name="frequency_of_saving1">Saving Frequency:</string>
+                            <string name="less_option">Less Options</string>
+                            <string name="more_options">More Options:</string>
+                            <string-array name="calculator_tab_fragment_groups">
+                                <item >Loan</item>
+                                <item >Credit Card</item>
+                                <item >Planning</item>
+                            </string-array>
+                                <string name="home_owners_insurance">Homeowners Insurance</string>
+                                <string name="home_owners_association">HOA dues</string>
 
 </resources>

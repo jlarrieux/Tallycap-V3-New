@@ -41,7 +41,7 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 	 * @param YearlyTaxes
 	 * @return
 	 */
-	public double MortgageCalculateTheValue(double interest, double amount,int length,  Calendar StartDate, double YearlyTaxes) {
+	public double MortgageCalculateTheValue(double interest, double amount,int length,  Calendar StartDate) {
 
 		String LengthFrequency = Global.YEARLY;
 		String Payfrequency = Global.MONTHLY;
@@ -51,8 +51,10 @@ public class CalculatorsModel extends CalculatorAbstractModel {
 		double r =this.CalculateLoanPayment(interest, amount, length, Payfrequency, StartDate, LengthFrequency, g);
 //		Log.v("MORTGAGE", String.format("Payment initial: %f", r));
 		
-		if(YearlyTaxes!=0) r += (YearlyTaxes/12);
+//		if(YearlyTaxes!=0) r += (YearlyTaxes/12);
 //		Log.v("MORTGAGE", String.format("Payment afer taxes: %f", r));
+//		g.logCat(String.format("MORTGAGE: amont: %f,  Yearly taxes: %f",amount, YearlyTaxes));
+//		Log.v("",String.format("MORTGAGE: amont: %f,  Yearly taxes: %f",amount, YearlyTaxes));
 		
 		return r;
 	}

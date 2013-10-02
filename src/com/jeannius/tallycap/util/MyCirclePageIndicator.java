@@ -91,6 +91,11 @@ public class MyCirclePageIndicator extends CirclePageIndicator implements Observ
 		setPageColor(0x99555555);
 		setFillColor(fillAll[13]);
 	}
+	@Override
+	public int getCurrentMode() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 		

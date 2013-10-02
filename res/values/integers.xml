@@ -30,4 +30,5 @@
         <item >5000</item>
     </integer-array>
     <integer name="one_hundred">100</integer>
+    <integer name="ten_thousand">10000</integer>
 </resources>

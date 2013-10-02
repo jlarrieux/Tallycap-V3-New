@@ -36,6 +36,7 @@ public class HomeActivity extends MyAbstractActivity implements OnGroupCollapseL
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_drawer);
+        
         init();
        
  
@@ -155,6 +156,7 @@ public class HomeActivity extends MyAbstractActivity implements OnGroupCollapseL
 		return false;
 	}
 
+	
 	
 	
 }

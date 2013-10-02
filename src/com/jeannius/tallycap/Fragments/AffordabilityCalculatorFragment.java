@@ -28,5 +28,10 @@ public class AffordabilityCalculatorFragment extends CalculatorFragment {
 
 
 
+	
+
+
+
+
 
 }

@@ -367,8 +367,7 @@ public abstract class CalculatorAbstractModel  {
 			int field =0;
 			int fieldForFinal =0;
 			int add =1;
-			g.logCat( String.format("Length: %d\nPayFrequenct: %s\nStartDate: %s\n LengthFrequency: %s", 
-													length,	payFrequency,StartDate.toString(), lengthFrequency));
+//			g.logCat( String.format("Length: %d\nPayFrequenct: %s\nStartDate: %s\n LengthFrequency: %s", length, payFrequency,StartDate.toString(), lengthFrequency));
 			Calendar finalDate = (Calendar) StartDate.clone();
 			Calendar clonerDate = (Calendar) StartDate.clone();
 			
@@ -384,7 +383,7 @@ public abstract class CalculatorAbstractModel  {
 			
 			if(fieldForFinal==Calendar.WEEK_OF_MONTH)finalDate.add(Calendar.DAY_OF_YEAR, (before-after));
 			
-			g.logCat( String.format("bef: %d, aft: %d", before, after));
+//			g.logCat( String.format("bef: %d, aft: %d", before, after));
 			
 			if(payFrequency.equals(Global.WEEKLY)) field = Calendar.WEEK_OF_MONTH;
 			else if(payFrequency.equals(Global.BIWEEKLY)){
@@ -400,10 +399,10 @@ public abstract class CalculatorAbstractModel  {
 			while(clonerDate.before(finalDate)){
 				clonerDate.add(field, add);
 				nl++;
-				g.logCat( String.format("Date before: %s, lenght: %d", clonerDate.getTime().toString(), nl));
+//				g.logCat( String.format("Date before: %s, lenght: %d", clonerDate.getTime().toString(), nl));
 			}
 			
-			g.logCat( String.format("Target date: %s, Final date: %s", finalDate.getTime().toString(), clonerDate.getTime().toString()));
+//			g.logCat( String.format("Target date: %s, Final date: %s", finalDate.getTime().toString(), clonerDate.getTime().toString()));
 			
 			return nl;
 		}

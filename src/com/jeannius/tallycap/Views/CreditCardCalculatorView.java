@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.jeannius.tallycap.R;
@@ -46,14 +48,13 @@ public class CreditCardCalculatorView extends MyScrollViewWithDate  {
 		result = (TextView) findViewById(R.id.creditCardCalculatorResultTextView);
 		calculate = (Button) findViewById(R.id.creditCardCalculatorCalculateButton);
 		whatIf = (Button) findViewById(R.id.creditCardCalculatorWhatIfButton);
+		moreOptionSwitch = (Switch) findViewById(R.id.creditCardCalculatorMoreOptionSwitch);
+		moreOptionsLinearLayout = (LinearLayout) findViewById(R.id.creditCardCalculatorMoreOptionLinearLayout);
 		
 		Model = new CalculatorsModel(context);
 		
 		calculate.setOnClickListener(this);
-		
-		
-		
-		
+		moreOptionSwitch.setOnCheckedChangeListener(this);	
 		
 		
 	}

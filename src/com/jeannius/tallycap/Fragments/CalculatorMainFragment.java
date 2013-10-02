@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.actionbarsherlock.app.SherlockFragment;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
 import com.jeannius.tallycap.R;
 import com.jeannius.tallycap.Fragments.CalculatorFragment.whatIfButtonSwitch;
 
@@ -49,12 +47,7 @@ public class CalculatorMainFragment extends SherlockFragment implements whatIfBu
 
 	
 
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		inflater.inflate(R.menu.main_overflow, menu);
-		super.onCreateOptionsMenu(menu, inflater);
-	}
-	
+
 
 		
 	
